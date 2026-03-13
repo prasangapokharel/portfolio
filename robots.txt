@@ -13,3 +13,4 @@ Disallow: /temp/
 
 # Allow all search engines to crawl
 Crawl-delay: 1
+New
