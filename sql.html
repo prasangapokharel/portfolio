@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MySQL Master — Learn SQL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#00758F;--teal-d:#005a6e;--teal-l:#e0f4f8;--teal-m:#b3dde8;
+  --orange:#FF9900;--orange-d:#cc7a00;--orange-l:#fff3e0;
+  --gray-1:#f5f7f9;--gray-2:#e8ecef;--gray-4:#9aa3ad;--gray-7:#3d4a56;--gray-9:#1a2230;
+  --green:#10b981;--red:#ef4444;--r:10px;--r2:7px;
+}
+
+/* --- CRITICAL: artifact-safe layout --- */
+html{font-size:14px;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Space Grotesk',system-ui,-apple-system,sans-serif;
+  background:var(--gray-1);
+  color:var(--gray-9);
+  min-height:100vh;
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+code,.mono{font-family:'Fira Code','Cascadia Code','Consolas',monospace}
+
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--teal-l)}
+::-webkit-scrollbar-thumb{background:var(--teal);border-radius:3px}
+
+/* ---- HEADER ---- */
+.hdr{
+  background:var(--teal);
+  color:#fff;
+  padding:0 20px;
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 2px 12px rgba(0,0,0,.2);
+  position:sticky;top:0;z-index:99;
+  flex-shrink:0;
+}
+.hdr-brand{display:flex;align-items:center;gap:10px;font-size:1.15rem;font-weight:800;letter-spacing:-.02em}
+.hdr-logo{background:var(--orange);color:#fff;padding:3px 10px;border-radius:6px;font-size:.75rem;font-weight:700;letter-spacing:.07em}
+.hdr-stats{display:flex;gap:8px}
+.hstat{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);border-radius:7px;padding:5px 12px;text-align:center;min-width:64px}
+.hstat-l{font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;opacity:.75;display:block}
+.hstat-v{font-size:1rem;font-weight:800;line-height:1.1}
+.hstat.hs-org{background:var(--orange);border-color:var(--orange-d)}
+@media(max-width:700px){.hdr-stats{display:none}}
+
+/* ---- BODY GRID ---- */
+.body{
+  display:grid;
+  grid-template-columns:260px 1fr 360px;
+  gap:14px;
+  max-width:1380px;
+  margin:0 auto;
+  padding:16px 14px 24px;
+}
+@media(max-width:1100px){.body{grid-template-columns:220px 1fr 300px}}
+@media(max-width:780px){.body{grid-template-columns:1fr}}
+
+/* ---- PANEL ---- */
+.panel{background:#fff;border-radius:var(--r);box-shadow:0 3px 18px rgba(0,117,143,.1);overflow:hidden;display:flex;flex-direction:column}
+.ph{padding:11px 16px;border-bottom:2px solid var(--teal-l);background:var(--teal-l);display:flex;align-items:center;gap:7px}
+.ph h2{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--teal-d)}
+.pb{padding:14px;flex:1;overflow-y:auto}
+
+/* ---- STAT CARDS ---- */
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}
+.scard{background:var(--gray-1);border-radius:var(--r2);padding:10px 12px;border:1.5px solid var(--gray-2);transition:border-color .2s}
+.scard:hover{border-color:var(--teal-m)}
+.scard.ct{background:var(--teal);border-color:var(--teal);color:#fff}
+.scard.co{background:var(--orange);border-color:var(--orange);color:#fff}
+.sl{font-size:.55rem;text-transform:uppercase;letter-spacing:.1em;opacity:.7;font-weight:700;display:block;margin-bottom:2px}
+.sv{font-size:1.5rem;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.ct .sl,.co .sl{opacity:.85;color:#fff}.ct .sv,.co .sv{color:#fff}
+
+.streak-row{background:var(--gray-1);border-radius:var(--r2);padding:10px 12px;border:1.5px solid var(--gray-2);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
+.sfire{font-size:1.3rem;transition:transform .2s}
+.sfire.hot{animation:fp .55s ease-in-out infinite alternate}
+@keyframes fp{from{transform:scale(1)}to{transform:scale(1.18)}}
+.snum{font-size:1.9rem;font-weight:800;color:var(--orange)}
+.slbl{font-size:.58rem;text-transform:uppercase;letter-spacing:.09em;color:var(--gray-4)}
+
+.sec-lbl{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gray-4);margin-bottom:6px;margin-top:12px;display:flex;align-items:center;gap:6px}
+.sec-lbl::after{content:'';flex:1;height:1px;background:var(--gray-2)}
+
+.bdg{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.bt{background:var(--teal-l);color:var(--teal);border:1px solid var(--teal-m)}
+.bo{background:var(--orange-l);color:var(--orange-d);border:1px solid #ffd580}
+.bg{background:#ecfdf5;color:#059669;border:1px solid #a7f3d0}
+.br{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+
+.prog-lbl{font-size:.62rem;font-weight:700;color:var(--gray-4);display:flex;justify-content:space-between;margin-bottom:4px}
+.prog-bar{height:5px;background:var(--gray-2);border-radius:3px;overflow:hidden;margin-bottom:12px}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--orange));border-radius:3px;transition:width .5s ease}
+
+.mx-box{text-align:center;padding:9px;background:linear-gradient(135deg,var(--teal),var(--teal-d));border-radius:var(--r2);color:#fff;margin-top:10px}
+.mx-l{font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+.mx-v{font-size:1.7rem;font-weight:800;font-variant-numeric:tabular-nums}
+
+.btn-reset{width:100%;margin-top:12px;padding:9px;background:var(--gray-1);border:1.5px solid var(--gray-2);border-radius:var(--r2);font-family:inherit;font-size:.75rem;font-weight:700;color:var(--gray-7);cursor:pointer;transition:all .2s}
+.btn-reset:hover{background:var(--gray-2);border-color:var(--teal)}
+
+/* ---- QUESTION CARD ---- */
+.qcard{background:var(--teal);border-radius:var(--r2);padding:18px;min-height:100px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+.qcard::before{content:'';position:absolute;top:-28px;right:-28px;width:110px;height:110px;background:rgba(255,153,0,.15);border-radius:50%}
+.qtopic{font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.7);font-weight:700}
+.qtext{font-size:.95rem;font-weight:600;color:#fff;line-height:1.45;position:relative;z-index:1}
+
+.hint-box{background:var(--orange-l);border:1.5px solid #ffd580;border-radius:var(--r2);padding:9px 13px;font-size:.75rem;color:#7a4800;line-height:1.4;margin-top:8px;display:none}
+.hint-box.on{display:block}
+
+.inp-lbl{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-4);margin-bottom:5px;display:block;margin-top:12px}
+.sqli{width:100%;padding:11px 14px;border:2px solid var(--gray-2);border-radius:var(--r2);font-family:'Fira Code','Consolas',monospace;font-size:.88rem;background:var(--gray-1);color:var(--gray-9);transition:all .2s;outline:none}
+.sqli:focus{border-color:var(--teal);background:#fff;box-shadow:0 0 0 3px rgba(0,117,143,.1)}
+.sqli.ok{border-color:var(--green);background:#ecfdf5}
+.sqli.bad{border-color:var(--red);background:#fef2f2}
+
+.dots{display:flex;gap:5px;margin-top:7px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--gray-2);transition:background .2s}
+.dot.used{background:var(--red)}
+.dot.win{background:var(--green)}
+
+.fb{margin-top:7px;padding:9px 13px;border-radius:var(--r2);font-size:.78rem;font-weight:600;display:none;align-items:center;gap:7px}
+.fb.on{display:flex}
+.fb.ok{background:#ecfdf5;color:#059669;border:1.5px solid #a7f3d0}
+.fb.bad{background:#fef2f2;color:#dc2626;border:1.5px solid #fecaca}
+
+.btn-submit{width:100%;margin-top:9px;padding:11px;background:var(--teal);border:none;border-radius:var(--r2);font-family:inherit;font-size:.85rem;font-weight:700;color:#fff;cursor:pointer;transition:all .2s;letter-spacing:.02em}
+.btn-submit:hover{background:var(--teal-d);transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,117,143,.25)}
+.btn-skip{width:100%;margin-top:5px;padding:9px;background:transparent;border:1.5px solid var(--gray-2);border-radius:var(--r2);font-family:inherit;font-size:.75rem;font-weight:600;color:var(--gray-4);cursor:pointer;transition:all .2s}
+.btn-skip:hover{border-color:var(--orange);color:var(--orange)}
+
+.timer-row{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding:9px 13px;background:var(--gray-1);border-radius:var(--r2);border:1.5px solid var(--gray-2)}
+.timer-main{font-size:1.4rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--teal);font-family:'Fira Code','Consolas',monospace}
+.timer-avg{font-size:.65rem;color:var(--gray-4);text-align:right}
+.timer-avg span{display:block;font-weight:700;color:var(--teal-d);font-family:'Fira Code','Consolas',monospace}
+
+/* ---- RESULT PANEL ---- */
+.tabs{display:flex;border-bottom:2px solid var(--gray-2)}
+.tbtn{flex:1;padding:9px 5px;background:transparent;border:none;font-family:inherit;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--gray-4);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s}
+.tbtn.on{color:var(--teal);border-bottom-color:var(--teal)}
+.tbtn:hover:not(.on){color:var(--teal-d)}
+.tpane{display:none;padding:13px}
+.tpane.on{display:block}
+
+.ans-block{background:var(--gray-1);border:1.5px solid var(--gray-2);border-radius:var(--r2);padding:13px;font-size:.78rem;color:var(--teal-d);line-height:1.75;white-space:pre-wrap;word-break:break-all;font-family:'Fira Code','Consolas',monospace;max-height:130px;overflow-y:auto}
+.expl{margin-top:10px;padding:11px 13px;background:var(--teal-l);border-left:3px solid var(--teal);border-radius:0 var(--r2) var(--r2) 0;font-size:.77rem;line-height:1.55;color:var(--teal-d)}
+
+/* SQL highlighting */
+.kw{color:var(--teal);font-weight:700}
+.fn2{color:var(--orange-d);font-weight:600}
+.str{color:#059669}
+.num2{color:#7c3aed}
+
+/* ---- LIVE TABLE ---- */
+.t-meta{display:flex;align-items:center;justify-content:space-between;padding:5px 9px;background:var(--teal-l);border-radius:var(--r2);font-size:.65rem;color:var(--teal-d);font-weight:700;margin-bottom:8px}
+.t-meta .rc{color:var(--orange-d)}
+.twrap{overflow-x:auto;border-radius:var(--r2);border:1.5px solid var(--gray-2);margin-bottom:12px}
+.lt{width:100%;border-collapse:collapse;font-size:.72rem}
+.lt thead th{background:var(--teal);color:#fff;padding:7px 9px;text-align:left;font-weight:700;font-size:.63rem;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.lt thead th.pkc{background:var(--orange)}
+.lt tbody tr:nth-child(even){background:var(--teal-l)}
+.lt tbody tr:hover{background:var(--teal-m)}
+.lt tbody td{padding:6px 9px;border-bottom:1px solid var(--gray-2);color:var(--gray-7);font-family:'Fira Code','Consolas',monospace;white-space:nowrap}
+.lt tbody td.pkv{color:var(--orange-d);font-weight:700}
+.lt tbody td.fkv{color:var(--red);font-weight:600}
+.lt tbody tr.hl td{background:#fff3e0;font-weight:600}
+
+.jrl-lbl{display:flex;align-items:center;gap:8px;padding:5px 9px;background:var(--orange);color:#fff;border-radius:var(--r2) var(--r2) 0 0;font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+.jrl-wrap{border:2px solid var(--orange);border-top:none;border-radius:0 0 var(--r2) var(--r2);overflow-x:auto;margin-bottom:10px}
+.jrt{width:100%;border-collapse:collapse;font-size:.7rem}
+.jrt thead th{background:var(--orange-l);color:var(--orange-d);padding:6px 8px;text-align:left;font-weight:700;font-size:.62rem;text-transform:uppercase;border-bottom:1px solid #ffd580}
+.jrt tbody td{padding:6px 8px;border-bottom:1px solid var(--gray-2);font-family:'Fira Code','Consolas',monospace;color:var(--gray-7)}
+.jrt tbody tr:hover{background:var(--orange-l)}
+
+/* ---- SCHEMA ---- */
+.sch-card{background:#fff;border:2px solid var(--gray-2);border-radius:var(--r2);overflow:hidden;margin-bottom:8px;transition:border-color .2s}
+.sch-card:hover{border-color:var(--teal)}
+.sch-card.act{border-color:var(--orange)}
+.sch-head{padding:7px 11px;background:var(--teal);color:#fff;font-size:.68rem;font-weight:700;display:flex;align-items:center;gap:6px}
+.sch-head.oh{background:var(--orange)}
+.sch-col{padding:4px 11px;font-size:.69rem;font-family:'Fira Code','Consolas',monospace;display:flex;align-items:center;gap:5px;border-bottom:1px solid var(--gray-1)}
+.sch-col:last-child{border-bottom:none}
+.ci{font-size:.65rem;width:14px;text-align:center}
+.cn{flex:1;color:var(--gray-7)}
+.ct2{color:var(--gray-4);font-size:.61rem}
+.rel-line{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:.63rem;color:var(--gray-4);font-family:'Fira Code','Consolas',monospace;margin:4px 0}
+.rel-line::before,.rel-line::after{content:'';flex:1;height:1px;background:var(--gray-2)}
+.rel-line span{color:var(--orange-d);font-weight:700}
+
+/* ---- MODAL ---- */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:200;backdrop-filter:blur(4px)}
+.modal.on{display:flex}
+.mbox{background:#fff;border-radius:14px;padding:32px 28px;text-align:center;max-width:420px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.25);border:2px solid var(--teal);animation:pop .3s cubic-bezier(.175,.885,.32,1.275)}
+@keyframes pop{from{opacity:0;transform:scale(.82)}to{opacity:1;transform:scale(1)}}
+.m-title{font-size:1.8rem;font-weight:800;color:var(--teal);margin-bottom:4px}
+.m-score{font-size:3rem;font-weight:800;color:var(--orange);line-height:1;margin:8px 0 16px}
+.m-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:18px}
+.ms{background:var(--gray-1);border-radius:var(--r2);padding:9px;border:1px solid var(--gray-2)}
+.ms-l{font-size:.57rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-4)}
+.ms-v{font-size:1.1rem;font-weight:800;color:var(--teal-d)}
+.btn-pa{padding:12px 28px;background:var(--teal);border:none;border-radius:var(--r2);font-family:inherit;font-size:.9rem;font-weight:700;color:#fff;cursor:pointer;transition:all .2s}
+.btn-pa:hover{background:var(--teal-d);transform:translateY(-1px);box-shadow:0 5px 16px rgba(0,117,143,.3)}
+
+/* ---- TOAST ---- */
+.toast{position:fixed;top:72px;left:50%;transform:translateX(-50%) translateY(-8px);background:var(--orange);color:#fff;padding:8px 22px;border-radius:28px;font-weight:700;font-size:.85rem;box-shadow:0 6px 24px rgba(255,153,0,.4);opacity:0;pointer-events:none;transition:all .3s;z-index:150;white-space:nowrap}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* exec bar */
+.exec-bar{padding:7px 11px;background:#1a2230;border-radius:var(--r2);font-family:'Fira Code','Consolas',monospace;font-size:.7rem;color:#a5f3fc;margin-bottom:9px;overflow-x:auto;white-space:nowrap}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-brand"><span class="hdr-logo">MySQL</span>Master — Learn SQL</div>
+  <div class="hdr-stats">
+    <div class="hstat"><span class="hstat-l">Score</span><span class="hstat-v" id="hs">0</span></div>
+    <div class="hstat"><span class="hstat-l">Level</span><span class="hstat-v" id="hl">1</span></div>
+    <div class="hstat"><span class="hstat-l">Streak</span><span class="hstat-v" id="hst">0🔥</span></div>
+    <div class="hstat hs-org"><span class="hstat-l">Mult</span><span class="hstat-v" id="hm">1.0×</span></div>
+  </div>
+</header>
+
+<div class="body">
+
+  <!-- LEFT -->
+  <div class="panel">
+    <div class="ph"><span>📊</span><h2>Stats</h2></div>
+    <div class="pb">
+      <div class="sgrid">
+        <div class="scard ct"><span class="sl">Score</span><span class="sv" id="score">0</span></div>
+        <div class="scard co"><span class="sl">Level</span><span class="sv" id="level">1</span></div>
+        <div class="scard"><span class="sl">Done</span><span class="sv" id="done">0</span></div>
+        <div class="scard"><span class="sl">Avg (s)</span><span class="sv mono" id="avg">—</span></div>
+      </div>
+
+      <div class="streak-row">
+        <div><div class="slbl">Streak</div><div class="snum" id="snum">0</div></div>
+        <span class="sfire" id="sfire">🔥</span>
+      </div>
+
+      <div class="prog-lbl"><span>Level Progress</span><span id="ptxt">0/5</span></div>
+      <div class="prog-bar"><div class="prog-fill" id="pfill" style="width:0%"></div></div>
+
+      <div class="mx-box">
+        <div class="mx-l">Multiplier</div>
+        <div class="mx-v" id="mult">1.0×</div>
+      </div>
+
+      <div class="sec-lbl">Topic</div>
+      <div id="topic-bdg" class="bdg bt">—</div>
+      &nbsp;
+      <div id="diff-bdg" class="bdg bo">BASIC</div>
+
+      <div class="sec-lbl">Best Streak</div>
+      <div style="font-size:1.35rem;font-weight:800;color:var(--orange)" id="best">0</div>
+
+      <button class="btn-reset" onclick="resetGame()">↺ New Game</button>
+    </div>
+  </div>
+
+  <!-- MIDDLE -->
+  <div class="panel">
+    <div class="ph"><span>❓</span><h2>Challenge</h2></div>
+    <div class="pb">
+      <div class="qcard">
+        <span class="qtopic" id="qtopic">SELECT</span>
+        <div class="qtext" id="qtext">Loading…</div>
+      </div>
+
+      <div class="hint-box" id="hintbox"></div>
+
+      <label class="inp-lbl" for="sqli">Your SQL Answer</label>
+      <input type="text" id="sqli" class="sqli" placeholder="SELECT … FROM …" autocomplete="off" spellcheck="false" onkeydown="onKey(event)">
+      <div class="dots">
+        <div class="dot" id="d0"></div>
+        <div class="dot" id="d1"></div>
+        <div class="dot" id="d2"></div>
+      </div>
+
+      <div class="fb" id="fb"></div>
+
+      <button class="btn-submit" onclick="checkAns()">✓ Submit <kbd style="font-size:.6rem;opacity:.65;margin-left:4px">[Enter]</kbd></button>
+      <button class="btn-skip" onclick="skipQ()">⏭ Skip this question</button>
+
+      <div class="timer-row">
+        <div>
+          <div style="font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-4);margin-bottom:2px">Time</div>
+          <div class="timer-main"><span id="timer">0.0</span>s</div>
+        </div>
+        <div class="timer-avg">Avg Speed<span id="avg2">—</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="panel">
+    <div class="tabs">
+      <button class="tbtn on" onclick="showTab('answer',this)">Answer</button>
+      <button class="tbtn" onclick="showTab('table',this)">Live Table</button>
+      <button class="tbtn" onclick="showTab('schema',this)">Schema</button>
+    </div>
+
+    <div id="pane-answer" class="tpane on">
+      <div class="sec-lbl">Correct Query</div>
+      <div class="ans-block mono" id="ans-disp">—</div>
+      <div class="expl" id="expl">—</div>
+    </div>
+
+    <div id="pane-table" class="tpane">
+      <div id="live-tbl"><p style="padding:16px;color:var(--gray-4);font-size:.78rem;text-align:center">Run a query to see data</p></div>
+    </div>
+
+    <div id="pane-schema" class="tpane">
+      <div id="schema-out"></div>
+    </div>
+  </div>
+
+</div><!-- /body -->
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="mbox">
+    <div class="m-title">Game Over 🎓</div>
+    <div class="m-score" id="m-score">0</div>
+    <div class="m-grid">
+      <div class="ms"><div class="ms-l">Level</div><div class="ms-v" id="m-lvl">1</div></div>
+      <div class="ms"><div class="ms-l">Questions</div><div class="ms-v" id="m-q">0</div></div>
+      <div class="ms"><div class="ms-l">Best Streak</div><div class="ms-v" id="m-str">0</div></div>
+      <div class="ms"><div class="ms-l">Avg Speed</div><div class="ms-v mono" id="m-spd">—</div></div>
+    </div>
+    <button class="btn-pa" onclick="resetGame()">Play Again 🚀</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ======= DATABASE ======= */
+var DB={
+  users:[
+    {id:1,name:'John Doe',email:'john@ex.com',salary:75000,dept:'IT'},
+    {id:2,name:'Jane Smith',email:'jane@ex.com',salary:85000,dept:'HR'},
+    {id:3,name:'Bob Johnson',email:'bob@ex.com',salary:65000,dept:'IT'},
+    {id:4,name:'Alice Brown',email:'alice@ex.com',salary:95000,dept:'Finance'},
+    {id:5,name:'Tom Chen',email:'tom@ex.com',salary:55000,dept:'Marketing'}
+  ],
+  orders:[
+    {id:101,user_id:1,product:'Laptop',qty:1,total:1200},
+    {id:102,user_id:2,product:'Mouse',qty:3,total:75},
+    {id:103,user_id:1,product:'Keyboard',qty:2,total:150},
+    {id:104,user_id:3,product:'Monitor',qty:1,total:350},
+    {id:105,user_id:4,product:'Headset',qty:1,total:89},
+    {id:106,user_id:2,product:'Webcam',qty:1,total:120}
+  ],
+  products:[
+    {id:1,name:'Laptop',category:'Electronics',price:1200,stock:15},
+    {id:2,name:'Mouse',category:'Accessories',price:25,stock:200},
+    {id:3,name:'Keyboard',category:'Accessories',price:75,stock:80},
+    {id:4,name:'Monitor',category:'Electronics',price:350,stock:30},
+    {id:5,name:'Headset',category:'Audio',price:89,stock:60}
+  ],
+  employees:[
+    {id:1,name:'John Doe',dept:'IT',salary:75000,manager_id:null},
+    {id:2,name:'Jane Smith',dept:'HR',salary:65000,manager_id:1},
+    {id:3,name:'Bob Johnson',dept:'IT',salary:70000,manager_id:1},
+    {id:4,name:'Alice Brown',dept:'Finance',salary:90000,manager_id:null},
+    {id:5,name:'Tom Chen',dept:'Marketing',salary:55000,manager_id:4}
+  ],
+  departments:[
+    {id:1,name:'IT',budget:500000,location:'Floor 3'},
+    {id:2,name:'HR',budget:200000,location:'Floor 1'},
+    {id:3,name:'Finance',budget:300000,location:'Floor 2'},
+    {id:4,name:'Marketing',budget:150000,location:'Floor 4'}
+  ]
+};
+
+var PK={users:'id',orders:'id',products:'id',employees:'id',departments:'id'};
+var FK_MAP={orders:{user_id:1},employees:{manager_id:1}};
+
+/* ======= QUESTIONS ======= */
+var QQ=[
+  {id:1,topic:'SELECT',diff:'BASIC',
+   q:'Select all columns from the users table',
+   a:'SELECT * FROM users',
+   hint:'Use * to select every column',
+   expl:'SELECT * retrieves every column from a table. FROM specifies which table. Always end with a semicolon in real SQL.',
+   tbl:'users'},
+  {id:2,topic:'SELECT',diff:'BASIC',
+   q:'Select only name and email from users',
+   a:'SELECT name, email FROM users',
+   hint:'List columns separated by commas',
+   expl:'Listing specific columns is a best practice — it reduces data transfer and makes your intent clear.',
+   tbl:'users',cols:['name','email']},
+  {id:3,topic:'WHERE',diff:'BASIC',
+   q:'Get all users with salary greater than 70000',
+   a:'SELECT * FROM users WHERE salary > 70000',
+   hint:'Use WHERE with a comparison operator',
+   expl:'WHERE filters rows. > means greater than. Only rows satisfying the condition are returned to the client.',
+   tbl:'users',filter:function(r){return r.salary>70000}},
+  {id:4,topic:'WHERE',diff:'BASIC',
+   q:"Get the user named 'Jane Smith'",
+   a:"SELECT * FROM users WHERE name = 'Jane Smith'",
+   hint:"String comparisons use single quotes",
+   expl:"String values need single quotes. = is exact match — it is case-sensitive in most MySQL configs.",
+   tbl:'users',filter:function(r){return r.name==='Jane Smith'}},
+  {id:5,topic:'ORDER BY',diff:'BASIC',
+   q:'Get all users sorted by salary highest to lowest',
+   a:'SELECT * FROM users ORDER BY salary DESC',
+   hint:'ORDER BY col DESC for descending',
+   expl:'ORDER BY sorts result rows. DESC = highest first (descending). ASC = lowest first (default).',
+   tbl:'users',sort:function(a,b){return b.salary-a.salary}},
+  {id:6,topic:'ORDER BY',diff:'BASIC',
+   q:'Get all products sorted by price lowest to highest',
+   a:'SELECT * FROM products ORDER BY price ASC',
+   hint:'ASC is lowest to highest',
+   expl:'ASC is the default sort order. Being explicit with ASC makes your query easier to read.',
+   tbl:'products',sort:function(a,b){return a.price-b.price}},
+  {id:7,topic:'LIMIT',diff:'BASIC',
+   q:'Get the top 3 highest-paid users',
+   a:'SELECT * FROM users ORDER BY salary DESC LIMIT 3',
+   hint:'Combine ORDER BY with LIMIT',
+   expl:'LIMIT caps how many rows come back. ORDER BY DESC + LIMIT N gives you the top-N pattern.',
+   tbl:'users',sort:function(a,b){return b.salary-a.salary},lim:3},
+  {id:8,topic:'DISTINCT',diff:'BASIC',
+   q:'Get a list of unique departments from users',
+   a:'SELECT DISTINCT dept FROM users',
+   hint:'DISTINCT removes duplicate values',
+   expl:'DISTINCT eliminates duplicate values in the result. Useful for finding what unique values exist.',
+   tbl:'users',distinct:'dept'},
+  {id:9,topic:'COUNT',diff:'BASIC',
+   q:'Count the total number of users',
+   a:'SELECT COUNT(*) FROM users',
+   hint:'COUNT(*) counts all rows',
+   expl:'COUNT(*) counts every row including NULLs. COUNT(col) skips NULL values in that column.',
+   tbl:'users',agg:function(r){return{'COUNT(*)':r.length}}},
+  {id:10,topic:'COUNT',diff:'BASIC',
+   q:'Count the total number of orders',
+   a:'SELECT COUNT(*) FROM orders',
+   hint:'COUNT(*) from the orders table',
+   expl:'Aggregate functions collapse many rows into a single summary value.',
+   tbl:'orders',agg:function(r){return{'COUNT(*)':r.length}}},
+  {id:11,topic:'SUM',diff:'BEGINNER',
+   q:'Get the total revenue from all orders',
+   a:'SELECT SUM(total) FROM orders',
+   hint:'SUM(column) adds all values',
+   expl:'SUM() adds up all numeric values in a column. Returns NULL if no rows match the WHERE clause.',
+   tbl:'orders',agg:function(r){return{'SUM(total)':r.reduce(function(s,x){return s+x.total},0)}}},
+  {id:12,topic:'AVG',diff:'BEGINNER',
+   q:'Calculate the average salary of all users',
+   a:'SELECT AVG(salary) FROM users',
+   hint:'AVG(column) computes the mean',
+   expl:'AVG() divides the sum of values by the non-NULL count. Very common in reports and dashboards.',
+   tbl:'users',agg:function(r){return{'AVG(salary)':(r.reduce(function(s,x){return s+x.salary},0)/r.length).toFixed(2)}}},
+  {id:13,topic:'WHERE AND',diff:'BEGINNER',
+   q:'Get users in the IT department with salary above 70000',
+   a:"SELECT * FROM users WHERE dept = 'IT' AND salary > 70000",
+   hint:'AND requires both conditions to be true',
+   expl:'AND is a logical operator — BOTH conditions must be true. OR requires at least one.',
+   tbl:'users',filter:function(r){return r.dept==='IT'&&r.salary>70000}},
+  {id:14,topic:'WHERE LIKE',diff:'BEGINNER',
+   q:"Find all users whose name starts with 'J'",
+   a:"SELECT * FROM users WHERE name LIKE 'J%'",
+   hint:"LIKE 'J%' — % means any characters after",
+   expl:"LIKE enables pattern matching. % matches any sequence of characters. _ matches exactly one.",
+   tbl:'users',filter:function(r){return r.name.startsWith('J')}},
+  {id:15,topic:'WHERE IN',diff:'BEGINNER',
+   q:"Get users in IT or Finance departments",
+   a:"SELECT * FROM users WHERE dept IN ('IT', 'Finance')",
+   hint:"IN (val1, val2) matches any of the list",
+   expl:'IN is a compact way to write multiple OR conditions. Cleaner and often faster.',
+   tbl:'users',filter:function(r){return['IT','Finance'].includes(r.dept)}},
+  {id:16,topic:'BETWEEN',diff:'BEGINNER',
+   q:'Get users with salary between 60000 and 80000',
+   a:'SELECT * FROM users WHERE salary BETWEEN 60000 AND 80000',
+   hint:'BETWEEN is inclusive on both ends',
+   expl:'BETWEEN v1 AND v2 is inclusive — same as >= v1 AND <= v2. Works on numbers and dates.',
+   tbl:'users',filter:function(r){return r.salary>=60000&&r.salary<=80000}},
+  {id:17,topic:'GROUP BY',diff:'BEGINNER',
+   q:'Count how many users are in each department',
+   a:'SELECT dept, COUNT(*) FROM users GROUP BY dept',
+   hint:'GROUP BY col + aggregate function',
+   expl:'GROUP BY splits rows into groups by column value. Aggregates (COUNT, SUM, AVG) operate on each group.',
+   tbl:'users',
+   grp:function(rows){
+     var m={};rows.forEach(function(r){m[r.dept]=(m[r.dept]||0)+1});
+     return Object.keys(m).map(function(k){return{dept:k,'COUNT(*)':m[k]}});
+   }},
+  {id:18,topic:'GROUP BY',diff:'BEGINNER',
+   q:'Get total order value per user_id',
+   a:'SELECT user_id, SUM(total) FROM orders GROUP BY user_id',
+   hint:'GROUP BY user_id and SUM the total',
+   expl:'GROUP BY + SUM is the classic pattern for per-entity totals — e.g. total revenue per customer.',
+   tbl:'orders',
+   grp:function(rows){
+     var m={};rows.forEach(function(r){m[r.user_id]=(m[r.user_id]||0)+r.total});
+     return Object.keys(m).map(function(k){return{user_id:+k,'SUM(total)':m[k]}});
+   }},
+  {id:19,topic:'HAVING',diff:'INTERMEDIATE',
+   q:'Show departments where average salary is above 70000',
+   a:'SELECT dept, AVG(salary) FROM users GROUP BY dept HAVING AVG(salary) > 70000',
+   hint:'HAVING filters after GROUP BY',
+   expl:'HAVING filters grouped results. WHERE runs before grouping; HAVING runs after — you cannot use WHERE on aggregates.',
+   tbl:'users',
+   grp:function(rows){
+     var m={},c={};
+     rows.forEach(function(r){m[r.dept]=(m[r.dept]||0)+r.salary;c[r.dept]=(c[r.dept]||0)+1});
+     return Object.keys(m).map(function(k){return{dept:k,'AVG(salary)':+(m[k]/c[k]).toFixed(2)}})
+       .filter(function(x){return x['AVG(salary)']>70000});
+   }},
+  {id:20,topic:'ALIAS',diff:'BEGINNER',
+   q:'Select name as full_name and salary as annual_pay from users',
+   a:'SELECT name AS full_name, salary AS annual_pay FROM users',
+   hint:'Use AS to rename a column in results',
+   expl:'AS creates a column alias — a new label in the result set. Very useful for readability and APIs.',
+   tbl:'users',alias:function(r){return{full_name:r.name,annual_pay:r.salary}}},
+  {id:21,topic:'IS NULL',diff:'BEGINNER',
+   q:'Find employees who have no manager (manager_id is NULL)',
+   a:'SELECT * FROM employees WHERE manager_id IS NULL',
+   hint:'Use IS NULL — not = NULL',
+   expl:'NULL means unknown/missing. You must use IS NULL; the expression = NULL never matches anything.',
+   tbl:'employees',filter:function(r){return r.manager_id===null}},
+  {id:22,topic:'IS NOT NULL',diff:'BEGINNER',
+   q:'Find employees who DO have a manager',
+   a:'SELECT * FROM employees WHERE manager_id IS NOT NULL',
+   hint:'IS NOT NULL',
+   expl:'IS NOT NULL returns rows where the column contains an actual value (not missing).',
+   tbl:'employees',filter:function(r){return r.manager_id!==null}},
+  {id:23,topic:'MIN MAX',diff:'BEGINNER',
+   q:'Find the highest salary among all users',
+   a:'SELECT MAX(salary) FROM users',
+   hint:'MAX(column)',
+   expl:'MAX() returns the largest value. MIN() returns the smallest. They work on numbers, dates, and strings.',
+   tbl:'users',agg:function(r){return{'MAX(salary)':Math.max.apply(null,r.map(function(x){return x.salary}))}}},
+  {id:24,topic:'MIN MAX',diff:'BEGINNER',
+   q:'Find the cheapest product price',
+   a:'SELECT MIN(price) FROM products',
+   hint:'MIN(column)',
+   expl:'MIN() finds the smallest value in a column. Use it for cheapest prices, earliest dates, lowest scores.',
+   tbl:'products',agg:function(r){return{'MIN(price)':Math.min.apply(null,r.map(function(x){return x.price}))}}},
+  {id:25,topic:'INNER JOIN',diff:'INTERMEDIATE',
+   q:'Get user names with their order products using INNER JOIN',
+   a:'SELECT users.name, orders.product FROM users INNER JOIN orders ON users.id = orders.user_id',
+   hint:'INNER JOIN table ON t1.col = t2.col',
+   expl:'INNER JOIN returns only rows with a match in BOTH tables. Rows with no match in either table are excluded.',
+   join:{type:'INNER',t1:'users',t2:'orders',
+     res:function(){
+       var out=[];
+       DB.users.forEach(function(u){
+         DB.orders.filter(function(o){return o.user_id===u.id}).forEach(function(o){
+           out.push({'users.name':u.name,'orders.product':o.product});
+         });
+       });
+       return out;
+     }}},
+  {id:26,topic:'LEFT JOIN',diff:'INTERMEDIATE',
+   q:'Get all users and their orders, including users with no orders',
+   a:'SELECT users.name, orders.total FROM users LEFT JOIN orders ON users.id = orders.user_id',
+   hint:'LEFT JOIN keeps ALL rows from the left table',
+   expl:'LEFT JOIN keeps ALL rows from the left table. Where no right-side match exists, right columns become NULL.',
+   join:{type:'LEFT',t1:'users',t2:'orders',
+     res:function(){
+       var out=[];
+       DB.users.forEach(function(u){
+         var ords=DB.orders.filter(function(o){return o.user_id===u.id});
+         if(ords.length){ords.forEach(function(o){out.push({'users.name':u.name,'orders.total':o.total})});}
+         else{out.push({'users.name':u.name,'orders.total':null});}
+       });
+       return out;
+     }}},
+  {id:27,topic:'UPDATE',diff:'INTERMEDIATE',
+   q:"Update John Doe's salary to 80000",
+   a:"UPDATE users SET salary = 80000 WHERE name = 'John Doe'",
+   hint:'UPDATE table SET col = val WHERE cond',
+   expl:'UPDATE modifies existing rows. ALWAYS use WHERE — without it every single row gets updated!',
+   tbl:'users',dml:'UPDATE',
+   dmlRows:function(){return DB.users.map(function(r){return r.name==='John Doe'?Object.assign({},r,{salary:80000}):r})}},
+  {id:28,topic:'DELETE',diff:'INTERMEDIATE',
+   q:'Delete orders where total is less than 100',
+   a:'DELETE FROM orders WHERE total < 100',
+   hint:'DELETE FROM table WHERE condition',
+   expl:'DELETE removes rows matching the condition. Without WHERE, ALL rows are deleted — always double-check!',
+   tbl:'orders',dml:'DELETE',
+   dmlRows:function(){return DB.orders.filter(function(r){return r.total>=100})}},
+  {id:29,topic:'INSERT',diff:'INTERMEDIATE',
+   q:"Insert a new product: name='Tablet', category='Electronics', price=499, stock=25",
+   a:"INSERT INTO products (name, category, price, stock) VALUES ('Tablet', 'Electronics', 499, 25)",
+   hint:'INSERT INTO t (cols) VALUES (vals)',
+   expl:'INSERT adds a new row. Always list columns explicitly — this keeps code working if the table structure changes.',
+   tbl:'products',dml:'INSERT',
+   dmlRows:function(){return DB.products.concat([{id:6,name:'Tablet',category:'Electronics',price:499,stock:25}])}},
+  {id:30,topic:'UNION',diff:'ADVANCED',
+   q:'Combine all user names and all product names into one column',
+   a:'SELECT name FROM users UNION SELECT name FROM products',
+   hint:'UNION combines result sets, removes duplicates',
+   expl:'UNION merges two SELECT results and removes duplicates. UNION ALL keeps duplicates and is faster.',
+   unionFn:function(){
+     var seen={},out=[];
+     DB.users.concat(DB.products).forEach(function(r){if(!seen[r.name]){seen[r.name]=1;out.push({name:r.name})}});
+     return out;
+   }},
+  {id:31,topic:'Subquery',diff:'ADVANCED',
+   q:'Get users with salary above the average salary',
+   a:'SELECT * FROM users WHERE salary > (SELECT AVG(salary) FROM users)',
+   hint:'Use a subquery inside WHERE',
+   expl:'The inner SELECT runs first and returns one value. The outer query uses that value as its filter condition.',
+   tbl:'users',
+   filter:function(r){
+     var avg=DB.users.reduce(function(s,x){return s+x.salary},0)/DB.users.length;
+     return r.salary>avg;
+   }},
+  {id:32,topic:'CREATE TABLE',diff:'ADVANCED',
+   q:"Create a table 'categories' with id INT PRIMARY KEY and name VARCHAR(100)",
+   a:'CREATE TABLE categories (id INT PRIMARY KEY, name VARCHAR(100))',
+   hint:'CREATE TABLE name (col type constraints)',
+   expl:'CREATE TABLE defines a new table structure. PRIMARY KEY ensures uniqueness. VARCHAR is variable-length text.',
+   noTbl:true},
+  {id:33,topic:'INDEX',diff:'ADVANCED',
+   q:'Create an index on the users.email column',
+   a:'CREATE INDEX idx_email ON users (email)',
+   hint:'CREATE INDEX name ON table (column)',
+   expl:'Indexes dramatically speed up WHERE and JOIN on indexed columns. They use extra storage and slow writes slightly.',
+   noTbl:true},
+  {id:34,topic:'ORDER BY',diff:'BEGINNER',
+   q:'Get all employees sorted alphabetically by name',
+   a:'SELECT * FROM employees ORDER BY name ASC',
+   hint:'ORDER BY name ASC',
+   expl:'String columns sort alphabetically with ASC. ORDER BY can sort on multiple columns: ORDER BY a, b.',
+   tbl:'employees',sort:function(a,b){return a.name.localeCompare(b.name)}},
+  {id:35,topic:'WHERE OR',diff:'BEGINNER',
+   q:"Get users in Marketing OR salary below 60000",
+   a:"SELECT * FROM users WHERE dept = 'Marketing' OR salary < 60000",
+   hint:'OR — at least one condition must be true',
+   expl:'OR returns a row when either condition is true. Use parentheses to control evaluation order with AND/OR.',
+   tbl:'users',filter:function(r){return r.dept==='Marketing'||r.salary<60000}}
+];
+
+/* ======= HELPERS ======= */
+function esc(s){
+  if(s===null)return '<em style="color:var(--gray-4)">NULL</em>';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function hilite(sql){
+  var kws=['SELECT','FROM','WHERE','ORDER','BY','GROUP','HAVING','JOIN','INNER','LEFT','RIGHT','ON',
+           'LIMIT','DISTINCT','AS','AND','OR','NOT','IN','BETWEEN','LIKE','IS','NULL','COUNT','SUM',
+           'AVG','MAX','MIN','DESC','ASC','INSERT','INTO','VALUES','UPDATE','SET','DELETE','CREATE',
+           'TABLE','INDEX','PRIMARY','KEY','VARCHAR','INT','UNION','ALL','EXISTS','CONCAT','FULL','OUTER'];
+  var h=esc(sql);
+  kws.forEach(function(k){
+    h=h.replace(new RegExp('\\b'+k+'\\b','gi'),function(m){return'<span class="kw">'+m+'</span>'});
+  });
+  h=h.replace(/'[^']*'/g,function(m){return'<span class="str">'+m+'</span>'});
+  h=h.replace(/\b(\d+)\b/g,'<span class="num2">$1</span>');
+  return h;
+}
+
+function mkTable(rows,tbl,hlFn){
+  if(!rows||!rows.length)return'<p style="padding:12px;color:var(--gray-4);font-size:.78rem">No rows</p>';
+  var cols=Object.keys(rows[0]);
+  var pk=PK[tbl]||'id';
+  var fkCols=FK_MAP[tbl]?Object.keys(FK_MAP[tbl]):[];
+  var rc=rows.length;
+  var h='<div class="t-meta"><span>📋 <b>'+tbl+'</b></span><span class="rc">'+rc+' row'+(rc!==1?'s':'')+'</span></div>';
+  h+='<div class="twrap"><table class="lt"><thead><tr>';
+  cols.forEach(function(c){
+    var isPK=c===pk;
+    h+='<th class="'+(isPK?'pkc':'')+'">'+(isPK?'🔑 ':fkCols.includes(c)?'🔗 ':'')+c+'</th>';
+  });
+  h+='</tr></thead><tbody>';
+  rows.forEach(function(r){
+    var hl=hlFn&&hlFn(r);
+    h+='<tr'+(hl?' class="hl"':'')+'>',cols.forEach(function(c){
+      var isPK=c===pk,isFK=fkCols.includes(c);
+      h+='<td class="'+(isPK?'pkv':isFK?'fkv':'')+'">'+esc(r[c])+'</td>';
+    });h+='</tr>';
+  });
+  h+='</tbody></table></div>';
+  return h;
+}
+
+function mkJoin(j){
+  var rows1=DB[j.t1],rows2=DB[j.t2];
+  var h='<div class="sec-lbl">'+j.t1+'</div>'+mkTable(rows1,j.t1);
+  h+='<div class="sec-lbl">'+j.t2+'</div>'+mkTable(rows2,j.t2);
+  var res=j.res();
+  h+='<div class="jrl-lbl">⚡ '+j.type+' JOIN Result — '+res.length+' rows</div>';
+  h+='<div class="jrl-wrap"><table class="jrt"><thead><tr>';
+  if(res.length){
+    Object.keys(res[0]).forEach(function(c){h+='<th>'+c+'</th>'});
+    h+='</tr></thead><tbody>';
+    res.forEach(function(r){
+      h+='<tr>';
+      Object.values(r).forEach(function(v){h+='<td>'+esc(v)+'</td>'});
+      h+='</tr>';
+    });
+  }
+  h+='</tbody></table></div>';
+  return h;
+}
+
+function mkSchema(activeT){
+  var tables={
+    users:{icon:'👥',cols:[{n:'id',t:'INT',pk:true},{n:'name',t:'VARCHAR(100)'},{n:'email',t:'VARCHAR(100)'},{n:'salary',t:'INT'},{n:'dept',t:'VARCHAR(50)'}]},
+    orders:{icon:'📦',cols:[{n:'id',t:'INT',pk:true},{n:'user_id',t:'INT',fk:'users.id'},{n:'product',t:'VARCHAR(100)'},{n:'qty',t:'INT'},{n:'total',t:'INT'}]},
+    products:{icon:'🏷️',cols:[{n:'id',t:'INT',pk:true},{n:'name',t:'VARCHAR(100)'},{n:'category',t:'VARCHAR(50)'},{n:'price',t:'INT'},{n:'stock',t:'INT'}]},
+    employees:{icon:'👔',cols:[{n:'id',t:'INT',pk:true},{n:'name',t:'VARCHAR(100)'},{n:'dept',t:'VARCHAR(50)'},{n:'salary',t:'INT'},{n:'manager_id',t:'INT',fk:'employees.id'}]},
+    departments:{icon:'🏢',cols:[{n:'id',t:'INT',pk:true},{n:'name',t:'VARCHAR(50)'},{n:'budget',t:'INT'},{n:'location',t:'VARCHAR(100)'}]}
+  };
+  var h='';
+  Object.keys(tables).forEach(function(tn){
+    var td=tables[tn],isAct=tn===activeT;
+    h+='<div class="sch-card'+(isAct?' act':'')+'">';
+    h+='<div class="sch-head'+(isAct?' oh':'')+'">'+td.icon+' '+tn+'</div>';
+    td.cols.forEach(function(col){
+      h+='<div class="sch-col"><span class="ci '+(col.pk?'pk-icon':col.fk?'fk-icon':'')+'">'+(col.pk?'🔑':col.fk?'🔗':'·')+'</span>';
+      h+='<span class="cn">'+col.n+'</span><span class="ct2">'+col.t+(col.fk?' → '+col.fk:'')+'</span></div>';
+    });
+    h+='</div>';
+  });
+  h+='<div class="rel-line"><span>users.id → orders.user_id</span></div>';
+  h+='<div class="rel-line"><span>employees.manager_id → employees.id</span></div>';
+  return h;
+}
+
+/* ======= LIVE TABLE BUILDER ======= */
+function buildLiveTable(q){
+  var c=document.getElementById('live-tbl');
+  if(q.join){c.innerHTML=mkJoin(q.join);return}
+  if(q.noTbl){c.innerHTML='<p style="padding:14px;color:var(--gray-4);font-size:.78rem;text-align:center">DDL — no result set</p>';return}
+  if(q.unionFn){c.innerHTML='<div class="sec-lbl">UNION Result</div>'+mkTable(q.unionFn(),'result');return}
+  if(q.dml){
+    var rows=q.dmlRows();
+    c.innerHTML='<div class="t-meta"><span>After '+q.dml+':</span></div>'+mkTable(rows,q.tbl);
+    return;
+  }
+  if(q.agg){c.innerHTML='<div class="sec-lbl">Aggregate Result</div>'+mkTable([q.agg(DB[q.tbl])],'result');return}
+  if(q.grp){c.innerHTML='<div class="sec-lbl">Grouped Result</div>'+mkTable(q.grp(DB[q.tbl]),'grouped');return}
+  if(q.alias){c.innerHTML='<div class="sec-lbl">With Aliases</div>'+mkTable(DB[q.tbl].map(q.alias),'alias_result');return}
+  if(q.distinct){
+    var seen={},rows2=[];
+    DB[q.tbl].forEach(function(r){if(!seen[r[q.distinct]]){seen[r[q.distinct]]=1;rows2.push(({[q.distinct]:r[q.distinct]}))}});
+    c.innerHTML='<div class="sec-lbl">DISTINCT '+q.distinct+'</div>'+mkTable(rows2,'distinct_result');
+    return;
+  }
+  var rows3=DB[q.tbl].slice();
+  if(q.filter)rows3=rows3.filter(q.filter);
+  if(q.sort)rows3=rows3.slice().sort(q.sort);
+  if(q.lim)rows3=rows3.slice(0,q.lim);
+  if(q.cols)rows3=rows3.map(function(r){var o={};q.cols.forEach(function(c){o[c]=r[c]});return o});
+  c.innerHTML=mkTable(rows3,q.tbl,q.filter||null);
+}
+
+/* ======= GAME STATE ======= */
+var GS={score:0,level:1,done:0,q:null,t0:Date.now(),times:[],att:0,used:{},streak:0,best:0};
+var _tmr=null;
+
+function norm(s){return s.trim().replace(/\s+/g,' ').toUpperCase().replace(/;$/,'').trim()}
+
+function updStats(){
+  var avg=GS.times.length?(GS.times.reduce(function(a,b){return a+b},0)/GS.times.length).toFixed(1):null;
+  var mx=(1+GS.level*0.1).toFixed(1)+'×';
+  var inLvl=GS.done%5;
+  el('score').textContent=GS.score;
+  el('hs').textContent=GS.score;
+  el('level').textContent=GS.level;
+  el('hl').textContent=GS.level;
+  el('done').textContent=GS.done;
+  el('avg').textContent=avg?avg+'s':'—';
+  el('avg2').textContent=avg?avg+'s':'—';
+  el('mult').textContent=mx;
+  el('hm').textContent=mx;
+  el('snum').textContent=GS.streak;
+  el('hst').textContent=GS.streak+'🔥';
+  el('best').textContent=GS.best;
+  el('ptxt').textContent=inLvl+'/5';
+  el('pfill').style.width=(inLvl/5*100)+'%';
+  el('sfire').className='sfire'+(GS.streak>=3?' hot':'');
+}
+
+function el(id){return document.getElementById(id)}
+
+function showTab(name,btn){
+  document.querySelectorAll('.tpane').forEach(function(p){p.classList.remove('on')});
+  document.querySelectorAll('.tbtn').forEach(function(b){b.classList.remove('on')});
+  el('pane-'+name).classList.add('on');
+  btn.classList.add('on');
+}
+
+function toast(msg){
+  var t=el('toast');t.textContent=msg;t.classList.add('on');
+  setTimeout(function(){t.classList.remove('on')},2200);
+}
+
+function getQ(){
+  var ord={BASIC:0,BEGINNER:1,INTERMEDIATE:2,ADVANCED:3};
+  var maxD=GS.level<=2?'BASIC':GS.level<=5?'BEGINNER':GS.level<=9?'INTERMEDIATE':'ADVANCED';
+  var pool=QQ.filter(function(q){return ord[q.diff]<=ord[maxD]&&!GS.used[q.id]});
+  if(!pool.length){GS.used={};pool=QQ.slice();}
+  return pool[Math.floor(Math.random()*pool.length)];
+}
+
+function loadQ(){
+  clearInterval(_tmr);
+  GS.q=getQ();
+  GS.used[GS.q.id]=1;
+  GS.att=0;
+  GS.t0=Date.now();
+
+  var q=GS.q;
+  el('qtopic').textContent=q.topic.toUpperCase();
+  el('qtext').textContent=q.q;
+
+  // badges
+  el('topic-bdg').textContent=q.topic;
+  var db=el('diff-bdg');
+  db.textContent=q.diff;
+  db.className='bdg '+(q.diff==='BASIC'?'bt':q.diff==='BEGINNER'?'bt':q.diff==='INTERMEDIATE'?'bo':'br');
+
+  // hint
+  var hb=el('hintbox');hb.textContent='💡 '+q.hint;hb.classList.add('on');
+
+  // answer & explanation
+  el('ans-disp').innerHTML=hilite(q.a);
+  el('expl').textContent=q.expl;
+
+  // live table
+  buildLiveTable(q);
+
+  // schema
+  el('schema-out').innerHTML=mkSchema(q.tbl||null);
+
+  // input
+  var inp=el('sqli');inp.value='';inp.className='sqli';
+
+  // feedback
+  var fb=el('fb');fb.className='fb';
+
+  // dots
+  for(var i=0;i<3;i++)el('d'+i).className='dot';
+
+  // timer
+  _tmr=setInterval(function(){
+    el('timer').textContent=((Date.now()-GS.t0)/1000).toFixed(1);
+  },100);
+
+  // focus safely
+  setTimeout(function(){try{inp.focus()}catch(e){}},80);
+  updStats();
+}
+
+function checkAns(){
+  var inp=el('sqli');
+  var val=inp.value;
+  if(!val.trim())return;
+  var correct=norm(val)===norm(GS.q.a);
+  if(correct){
+    clearInterval(_tmr);
+    var t=(Date.now()-GS.t0)/1000;
+    GS.times.push(t);
+    var dv={BASIC:1,BEGINNER:1.5,INTERMEDIATE:2.5,ADVANCED:4}[GS.q.diff]||1;
+    var sp=Math.max(0,25-t*4);
+    var pts=Math.floor((dv*15+sp)*(1+GS.level*0.1));
+    GS.score+=pts;GS.done++;GS.streak++;GS.best=Math.max(GS.best,GS.streak);
+    var prev=GS.level;GS.level=Math.floor(GS.done/5)+1;
+    inp.className='sqli ok';
+    var fb=el('fb');
+    fb.innerHTML='✅ Correct! <b>+'+pts+' pts</b>'+(GS.streak>=3?' 🔥 Streak ×'+GS.streak:'');
+    fb.className='fb ok on';
+    el('d'+Math.min(GS.att,2)).className='dot win';
+    if(GS.level>prev)toast('🎉 Level Up! Level '+GS.level);
+    updStats();
+    setTimeout(loadQ,1350);
+  } else {
+    GS.streak=0;GS.att++;
+    inp.className='sqli bad';
+    var fb2=el('fb');
+    fb2.innerHTML='❌ Not quite — attempt '+GS.att+'/3';
+    fb2.className='fb bad on';
+    el('d'+Math.min(GS.att-1,2)).className='dot used';
+    updStats();
+    if(GS.att>=3){setTimeout(loadQ,1700);}
+    else{setTimeout(function(){el('sqli').className='sqli';try{el('sqli').focus()}catch(e){}},550);}
+  }
+}
+
+function onKey(e){if(e.key==='Enter'){e.preventDefault();checkAns();}}
+
+function skipQ(){GS.streak=0;clearInterval(_tmr);updStats();loadQ();}
+
+function resetGame(){
+  clearInterval(_tmr);
+  GS={score:0,level:1,done:0,q:null,t0:Date.now(),times:[],att:0,used:{},streak:0,best:0};
+  el('modal').classList.remove('on');
+  updStats();
+  loadQ();
+}
+
+/* ======= START ======= */
+(function init(){
+  loadQ();
+  updStats();
+})();
+</script>
+</body>
+</html>
