@@ -1,670 +1,499 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Prasanga Pokharel - Expert Full Stack Developer serving USA and Australia. Specializing in Python, Next.js, FastAPI, Django, AI integration, blockchain development, and modern web solutions.">
-  <meta name="keywords" content="software developer USA, software developer Australia, Python developer, Next.js expert, FastAPI specialist, Django developer, AI integration, blockchain development, full-stack developer, web developer, enterprise software solutions">
+  <meta name="description" content="Prasanga Pokharel - Full Stack Developer specializing in Python, Next.js, FastAPI, Django, AI, and blockchain development.">
   <meta name="author" content="Prasanga Pokharel">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-  <meta name="geo.region" content="US">
-  <meta name="geo.region" content="AU">
-  <meta name="geo.country" content="United States">
-  <meta name="geo.country" content="Australia">
-  <meta name="geo.placename" content="New York, Sydney">
-  
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Prasanga Pokharel - Expert Full Stack Developer | USA & Australia">
-  <meta property="og:description" content="Expert Full Stack Developer serving USA and Australia, specializing in Python, Next.js, FastAPI, Django, AI integration, and blockchain development.">
-  <meta property="og:image" content="https://prasangapokharel.com.np/profile.jpg">
-  <meta property="og:url" content="https://prasangapokharel.com.np/">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Prasanga Pokharel Portfolio">
-  <meta property="og:locale" content="en_US">
-  
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Prasanga Pokharel - Expert Full Stack Developer | USA & Australia">
-  <meta name="twitter:description" content="Expert Full Stack Developer serving USA and Australia, specializing in Python, Next.js, FastAPI, Django, AI integration, and blockchain development.">
-  <meta name="twitter:image" content="https://prasangapokharel.com.np/profile.jpg">
-  <meta name="twitter:site" content="@prasangapokharel">
-  <meta name="twitter:creator" content="@prasangapokharel">
-  
-  <!-- Additional SEO Meta Tags -->
-  <meta name="theme-color" content="#0040FF">
-  <meta name="msapplication-TileColor" content="#0040FF">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Prasanga Pokharel">
-  
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://prasangapokharel.com.np/">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-chrome-192x192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="/favicon/android-chrome-512x512.png">
-  <link rel="manifest" href="/favicon/site.webmanifest">
-  
-  <title>Prasanga Pokharel - Expert Full Stack Developer | USA & Australia | Python, Next.js, AI, Blockchain</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="css/index.css">
-  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-  
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Prasanga Pokharel",
-    "jobTitle": "Full Stack Developer",
-    "description": "Expert Full Stack Developer serving USA and Australia, specializing in Python, Next.js, FastAPI, Django, AI integration, and blockchain development",
-    "url": "https://prasangapokharel.com.np",
-    "image": "https://prasangapokharel.com.np/profile.jpg",
-    "sameAs": [
-      "https://github.com/prasangapokharel",
-      "https://linkedin.com/in/prasangapokharel"
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "United States",
-        "addressLocality": "New York"
-    },
-    "knowsAbout": [
-      "Python Development",
-      "Next.js Development", 
-      "FastAPI Development",
-      "Django Framework",
-      "AI Integration",
-      "Blockchain Development",
-      "Full Stack Development",
-      "Software Development"
-    ],
-    "hasOccupation": {
-      "@type": "Occupation",
-      "name": "Full Stack Developer",
-      "occupationLocation": [
-        {
-          "@type": "Country",
-          "name": "United States"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        }
-      ]
-    }
-  }
-  </script>
-  
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#0040FF',
-            secondary: '#000111',
-            dark: '#000000',
-            light: '#ffffff',
-          },
-          fontFamily: {
-            sans: ['"Big Shoulders Display"', 'sans-serif'],
-            orbitron: ['Orbitron', 'sans-serif'],
-          },
-        }
-      }
-    }
-  </script>
-  
+  <title>Prasanga Pokharel | Full Stack Developer</title>
   <style>
-    /* Futuristic Background */
+    :root {
+      color-scheme: dark;
+      --bg: #0b0f16;
+      --panel: #121827;
+      --panel-2: #192e83;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #4f8cff;
+      --border: rgba(212, 211, 220, 0);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-        background-color: #050505;
-        background-image: 
-            linear-gradient(rgba(0, 64, 255, 0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0, 64, 255, 0.05) 1px, transparent 1px);
-        background-size: 40px 40px;
-        background-attachment: fixed;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #08101d 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.6;
     }
 
-    /* Glassmorphism Cards */
-    .glass-card {
-        background: rgba(10, 10, 15, 0.7);
-        backdrop-filter: blur(16px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        transition: all 0.4s ease;
-    }
-    
-    .glass-card:hover {
-        background: rgba(20, 20, 30, 0.9);
-        border-color: rgba(0, 64, 255, 0.5);
-        box-shadow: 0 0 30px rgba(0, 64, 255, 0.2);
-        transform: translateY(-5px);
+    main { max-width: 1100px; margin: 0 auto; padding: 48px 20px 72px; }
+    section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+    section:last-child { border-bottom: 0; }
+
+    h1, h2, h3 { margin: 0; line-height: 1.2; }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); letter-spacing: -0.03em; }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); margin-bottom: 18px; }
+    p { margin: 0; color: var(--muted); }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 14px;
     }
 
-    .glass-panel {
-        background: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(8px);
-        border: 1px solid rgba(255, 255, 255, 0.03);
+    .hero {
+      min-height: 72vh;
+      display: grid;
+      align-items: center;
     }
 
-    /* Neon Text Utilities */
-    .text-neon-blue {
-        color: #fff;
-        text-shadow: 0 0 5px #0040FF, 0 0 10px #0040FF, 0 0 20px #0040FF;
-    }
-    
-    .text-neon-purple {
-        color: #fff;
-        text-shadow: 0 0 5px #a855f7, 0 0 10px #a855f7, 0 0 20px #a855f7;
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: 32px;
+      align-items: center;
     }
 
-    /* Animated Gradient Borders */
-    .gradient-border {
-        position: relative;
-    }
-    
-    .gradient-border::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 2px;
-        width: 0%;
-        background: linear-gradient(90deg, #0040FF, #00D4FF);
-        transition: width 0.4s ease;
-    }
-    
-    .gradient-border:hover::after {
-        width: 100%;
+    .hero-content {
+      max-width: 760px;
     }
 
-    .hostinger-banner {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 9999;
-      background: linear-gradient(90deg, #000000 0%, #0a0a0a 100%);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-      animation: slideDown 0.5s ease-out;
+    .hero-visual {
+      display: flex;
+      justify-content: center;
     }
-    
-    @keyframes slideDown {
-      from { transform: translateY(-100%); }
-      to { transform: translateY(0); }
+
+    .hero-visual img {
+      width: min(100%, 440px);
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at 30% 30%, #b86cff 0%, #8d3bff 55%, #1a78c2 100%);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
     }
-    
-    .hostinger-banner img {
-      transition: transform 0.3s ease;
-      filter: brightness(1.2);
+
+    .lead {
+      margin-top: 18px;
+      font-size: 1.05rem;
+      max-width: 65ch;
     }
-    
-    .hostinger-banner:hover img {
-      transform: scale(1.05);
+
+    .meta {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
-    
-    body {
-      padding-top: 80px;
+
+    .hero-actions {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.92rem;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .hero-btn:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.16);
+      transform: translateY(-1px);
+    }
+
+    .hero-btn svg {
+      width: 18px;
+      height: 18px;
+      flex: none;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      font-size: 0.92rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .projects-list {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .certifications-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--panel), var(--panel-2));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+    }
+
+    .project-actions {
+      margin-top: 16px;
+    }
+
+    .preview-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.92rem;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .preview-btn:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .preview-btn.disabled {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .cert-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .cert-card figure {
+      margin: 0;
+      width: 100%;
+      aspect-ratio: 1.45 / 1;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: rgba(55, 27, 27, 0.03);
+    }
+
+    .cert-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .cert-card h3 {
+      margin-bottom: 0;
+      font-size: 1.05rem;
+    }
+
+    .card h3 { font-size: 1.15rem; margin-bottom: 10px; }
+    .card ul { margin: 14px 0 0; padding-left: 18px; color: var(--muted); }
+    .card li { margin: 8px 0; }
+    #skills .card ul {
+      padding-left: 0;
+      list-style: none;
+    }
+    #skills .card li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    #skills .card li svg,
+    #projects .card ul {
+      padding-left: 0;
+      list-style: none;
+    }
+    #projects .card li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    #skills .card li svg,
+    #projects .card li svg {
+      flex: none;
+      width: 18px;
+      height: 18px;
+      margin-top: 0.15rem;
+      color: var(--accent);
+    }
+
+    @media (max-width: 640px) {
+      main { padding-inline: 16px; }
+      section { padding: 42px 0; }
+      .hero { min-height: auto; padding-top: 24px; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { order: -1; }
     }
   </style>
-  
 </head>
-<body class="text-gray-300">
-  <!-- Hostinger Sticky Banner -->
-  <div class="hostinger-banner">
-    <a href="https://shorturl.at/HZNnD" target="_blank" rel="noopener noreferrer" class="block">
-      <div class="container mx-auto px-4 py-3 flex items-center justify-center">
-        <img src="hostinger.png" alt="Hostinger Hosting" class="h-12 md:h-14 w-auto">
-      </div>
-    </a>
-  </div>
-
-  <!-- Social Icons -->
-  <div class="social-icons hidden md:flex fixed left-6 top-1/2 transform -translate-y-1/2 flex-col gap-6 z-50">
-    <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="text-gray-500 hover:text-white transition transform hover:scale-125"><span class="uppercase text-xs font-bold">Fb</span></a>
-    <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="text-gray-500 hover:text-white transition transform hover:scale-125"><span class="uppercase text-xs font-bold">Tw</span></a>
-    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="text-gray-500 hover:text-white transition transform hover:scale-125"><span class="uppercase text-xs font-bold">In</span></a>
-    <a href="https://github.com/prasangapokharel" target="_blank" aria-label="GitHub" class="text-gray-500 hover:text-white transition transform hover:scale-125"><span class="uppercase text-xs font-bold">Gh</span></a>
-  </div>
-
- 
-  <!-- About Section -->
-  <section id="about" class="py-24 relative section-transition">
-    <!-- No solid background, letting grid show -->
-    <div class="container mx-auto px-6 relative z-10">
-      <div class="flex flex-col md:flex-row items-center gap-12">
-        <div class="md:w-1/2" data-aos="fade-right" data-aos-duration="1000">
-          <div class="profile-image-container relative">
-            <div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
-            <img src="profile.svg" class="w-auto h-auto max-w-full rounded-full border-2 border-white/10 relative z-10 hover:border-primary/50 transition duration-500" alt="Profile Image">
+<body>
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="eyebrow">Full Stack Developer</div>
+          <h1>Prasanga Pokharel</h1>
+          <p class="lead">
+            I design and build reliable web applications with a focus on clarity, performance, and maintainable architecture.
+            My work includes Python backends, modern frontend interfaces, AI integration, and blockchain-related systems.
+          </p>
+          <div class="meta">
+            <span class="tag">Python</span>
+            <span class="tag">Next.js</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Django</span>
+            <span class="tag">AI Integration</span>
+            <span class="tag">Blockchain</span>
           </div>
-        </div>
-        <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-          <p class="text-sm text-primary mb-2 uppercase tracking-wider orbitron">ABOUT ME</p>
-          <h2 class="text-5xl font-bold mb-6 text-white uppercase tracking-wider orbitron text-neon-blue">PRASANGA POKHAREL</h2>
-          <p id="typing-text" class="text-xl text-primary/80 mb-8 h-8 orbitron font-bold"></p>
-          <div class="glass-panel p-6 rounded-xl mb-8">
-              <p class="text-gray-300">
-                I am a passionate full-stack developer specializing in modern web technologies. Building scalable applications with Django, FastAPI, and Next.js. Expertise in blockchain development, Web3 integration, and real-time features with Supabase. I create innovative solutions that drive business growth.
-              </p>
-          </div>
-          <div class="flex flex-wrap gap-4">
-            <a href="https://wa.me/9779765470926?text=I%20want%20to%20hire%20you" target="_blank" class="glass-card px-8 py-4 uppercase tracking-wider text-sm font-bold text-white hover:text-primary flex items-center group">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 group-hover:animate-bounce" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-              </svg>
-              HIRE ME
+          <div class="hero-actions">
+            <a class="hero-btn" href="https://github.com/prasangapokharel" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.562 21.8 24 17.302 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
             </a>
-            <a href="https://github.com/prasangapokharel" target="_blank" class="glass-card px-8 py-4 uppercase tracking-wider text-sm font-bold text-white hover:text-primary flex items-center group">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 group-hover:rotate-12 transition" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-              GITHUB
+            <a class="hero-btn" href="https://www.linkedin.com/in/prasanga-raman-pokharel-4286ba391/" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0H5C2.239 0 0 2.239 0 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5V5c0-2.761-2.239-5-5-5zM7.12 20.452H3.561V9h3.559v11.452zM5.34 7.433a2.065 2.065 0 1 1 0-4.131 2.065 2.065 0 0 1 0 4.131zM20.452 20.452h-3.558v-5.568c0-1.328-.024-3.037-1.852-3.037-1.854 0-2.137 1.448-2.137 2.94v5.665H9.347V9h3.415v1.566h.048c.476-.9 1.637-1.853 3.369-1.853 3.602 0 4.274 2.371 4.274 5.455v6.284z"/></svg>
+              LinkedIn
             </a>
-            <a href="https://t.me/webdeveloperEN" target="_blank" class="glass-card px-8 py-4 uppercase tracking-wider text-sm font-bold text-white hover:text-primary flex items-center group">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 group-hover:scale-110 transition" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.654-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
-              </svg>
-              TELEGRAM
+            <a class="hero-btn" href="https://t.me/webdeveloperEN" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.654-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/></svg>
+              Telegram
+            </a>
+            <a class="hero-btn" href="https://api.whatsapp.com/send/?phone=9779765470926&text=I+want+to+hire+you&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.482A11.8 11.8 0 0 0 12.01 0C5.383 0 .007 5.376.007 12.004c0 2.11.553 4.16 1.602 5.974L0 24l6.174-1.58a11.95 11.95 0 0 0 5.832 1.49h.005c6.627 0 12.003-5.376 12.003-12.004a11.9 11.9 0 0 0-3.494-8.424zm-8.51 18.42h-.004a9.9 9.9 0 0 1-5.04-1.378l-.362-.214-3.66.936.977-3.565-.236-.367a9.94 9.94 0 0 1-1.519-5.288C1.166 6.025 5.63 1.561 12.01 1.561a9.8 9.8 0 0 1 6.966 2.884 9.77 9.77 0 0 1 2.87 6.959c0 6.38-4.464 11.497-9.836 11.497zm5.71-7.79c-.31-.155-1.834-.905-2.12-1.008-.286-.103-.494-.155-.703.155-.208.31-.806 1.008-.988 1.216-.182.207-.364.233-.674.078-.31-.155-1.31-.482-2.497-1.538-.923-.822-1.546-1.838-1.728-2.148-.182-.31-.019-.477.136-.632.14-.139.31-.363.466-.544.155-.18.208-.31.311-.517.104-.208.052-.389-.026-.544-.078-.155-.703-1.69-.964-2.314-.254-.608-.514-.526-.703-.536l-.598-.01c-.208 0-.544.078-.83.389-.285.31-1.09 1.064-1.09 2.598 0 1.533 1.116 3.015 1.27 3.222.155.207 2.188 3.163 5.303 4.438.742.32 1.32.512 1.772.656.746.237 1.425.204 1.962.13.598-.084 1.834-.754 2.093-1.481.26-.727.26-1.35.182-1.48-.078-.129-.285-.207-.598-.362z"/></svg>
+              WhatsApp
             </a>
           </div>
         </div>
+        <div class="hero-visual">
+          <img src="pp.png" alt="Prasanga Pokharel profile photo">
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="py-24 relative section-transition">
-    <div class="absolute inset-0 bg-black/40"></div>
-    <div class="container mx-auto px-6 relative z-10">
-      <p class="text-sm text-primary mb-2 uppercase tracking-wider orbitron text-center">WORK EXPERIENCE</p>
-      <h2 class="text-5xl font-bold text-center mb-12 text-white uppercase tracking-wider orbitron text-neon-purple">CORE TECHNOLOGIES</h2>
-      
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
-        <!-- Backend Development -->
-        <div class="glass-card p-8 rounded-2xl reveal-up">
-          <h3 class="text-2xl font-bold mb-4 uppercase tracking-wider flex items-center text-white">
-            <span class="text-primary mr-3">➜</span> Backend Development
-          </h3>
-          <p class="text-gray-400 mb-6">Building scalable web applications with Django, developing high-performance APIs with FastAPI and Flask, implementing authentication systems.</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-4 py-1 bg-primary/20 text-white text-xs font-bold rounded-full border border-primary/30">Django</span>
-            <span class="px-4 py-1 bg-primary/20 text-white text-xs font-bold rounded-full border border-primary/30">FastAPI</span>
-            <span class="px-4 py-1 bg-primary/20 text-white text-xs font-bold rounded-full border border-primary/30">Python</span>
-            <span class="px-4 py-1 bg-primary/20 text-white text-xs font-bold rounded-full border border-primary/30">MySQL</span>
-            <span class="px-4 py-1 bg-primary/20 text-white text-xs font-bold rounded-full border border-primary/30">Redis</span>
+    <section id="skills">
+      <div class="eyebrow">Skills</div>
+      <h2>Core Competencies</h2>
+      <div class="grid skills-grid">
+        <article class="card">
+          <h3>Backend Development</h3>
+          <p>Scalable APIs, authentication systems, and data-driven applications.</p>
+          <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Python</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Django</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>FastAPI</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>MySQL</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Redis</span></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Frontend Development</h3>
+          <p>Responsive user interfaces with clean structure and practical implementation.</p>
+          <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Next.js</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>React</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>TypeScript</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Tailwind CSS</span></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>AI and Blockchain</h3>
+          <p>Applied AI workflows and decentralized application development.</p>
+          <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>OpenAI API</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>RAG Pipelines</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Web3</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Smart Contracts</span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="eyebrow">Projects</div>
+      <h2>Selected Work</h2>
+      <div class="grid projects-list">
+        <article class="card">
+          <h3>Phonesium Network</h3>
+          <p>Blockchain trading platform built with a Django backend and Next.js frontend.</p>
+          <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Django</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Next.js</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Web3</span></li>
+          </ul>
+          <div class="project-actions">
+            <a class="preview-btn" href="https://phonesium.com" target="_blank" rel="noopener noreferrer">Preview</a>
           </div>
-        </div>
-
-        <!-- Frontend Development -->
-        <div class="glass-card p-8 rounded-2xl reveal-up" data-aos-delay="200">
-          <h3 class="text-2xl font-bold mb-4 uppercase tracking-wider flex items-center text-white">
-            <span class="text-primary mr-3">➜</span> Frontend Development
-          </h3>
-          <p class="text-gray-400 mb-6">Creating modern, responsive interfaces using Next.js with shadcn/ui component library, focusing on type-safe development.</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-4 py-1 bg-purple-500/20 text-white text-xs font-bold rounded-full border border-purple-500/30">Next.js</span>
-            <span class="px-4 py-1 bg-purple-500/20 text-white text-xs font-bold rounded-full border border-purple-500/30">React</span>
-            <span class="px-4 py-1 bg-purple-500/20 text-white text-xs font-bold rounded-full border border-purple-500/30">TypeScript</span>
-            <span class="px-4 py-1 bg-purple-500/20 text-white text-xs font-bold rounded-full border border-purple-500/30">Tailwind</span>
+        </article>
+        <article class="card">
+          <h3>Routine of Sunsari</h3>
+          <p>Full stack app built with Next.js, React, and modern backend architecture.</p>
+          <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Next.js</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>React</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Full Stack</span></li>
+          </ul>
+          <div class="project-actions">
+            <a class="preview-btn" href="https://www.routineofsunsari.com/" target="_blank" rel="noopener noreferrer">Preview</a>
           </div>
-        </div>
-
-        <!-- Blockchain Development -->
-        <div class="glass-card p-8 rounded-2xl reveal-up" data-aos-delay="400">
-          <h3 class="text-2xl font-bold mb-4 uppercase tracking-wider flex items-center text-white">
-            <span class="text-primary mr-3">➜</span> Blockchain
-          </h3>
-          <p class="text-gray-400 mb-6">Developing smart contracts, integrating Web3 technologies into applications, and building decentralized application architectures.</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-4 py-1 bg-orange-500/20 text-white text-xs font-bold rounded-full border border-orange-500/30">Smart Contracts</span>
-            <span class="px-4 py-1 bg-orange-500/20 text-white text-xs font-bold rounded-full border border-orange-500/30">Web3</span>
-            <span class="px-4 py-1 bg-orange-500/20 text-white text-xs font-bold rounded-full border border-orange-500/30">Solidity</span>
+        </article>
+        <article class="card">
+          <h3>EduPartnerHub</h3>
+          <p>Frontend built with Next.js and React for a modern education platform.</p>
+          <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Next.js</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>React</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Full Stack</span></li>
+          </ul>
+          <div class="project-actions">
+            <a class="preview-btn" href="https://www.edupartnerhub.com.np/" target="_blank" rel="noopener noreferrer">Preview</a>
           </div>
-        </div>
-
-        <!-- Cloud & AI -->
-        <div class="glass-card p-8 rounded-2xl reveal-up" data-aos-delay="600">
-          <h3 class="text-2xl font-bold mb-4 uppercase tracking-wider flex items-center text-white">
-            <span class="text-primary mr-3">➜</span> Cloud & AI
-          </h3>
-          <p class="text-gray-400 mb-6">Leveraging cloud infrastructure and integrating AI models for intelligent application behavior.</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-4 py-1 bg-green-500/20 text-white text-xs font-bold rounded-full border border-green-500/30">AWS</span>
-            <span class="px-4 py-1 bg-green-500/20 text-white text-xs font-bold rounded-full border border-green-500/30">Supabase</span>
-            <span class="px-4 py-1 bg-green-500/20 text-white text-xs font-bold rounded-full border border-green-500/30">OpenAI API</span>
+        </article>
+        <article class="card">
+          <h3>Sukuna Secondary School</h3>
+          <p>Laravel project with a Tailwind frontend for school management and information delivery.</p>
+          <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Laravel</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Tailwind CSS</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Frontend</span></li>
+          </ul>
+          <div class="project-actions">
+            <a class="preview-btn" href="https://sukunaschool.edu.np/" target="_blank" rel="noopener noreferrer">Preview</a>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Projects Section -->
-  <section id="works" class="py-24 relative section-transition">
-    <!-- Use glass effect for project backgrounds instead of solid black -->
-    
-    <div class="container mx-auto px-6 relative z-10">
-      <p class="text-sm text-primary mb-2 uppercase tracking-wider orbitron text-center">PORTFOLIO</p>
-      <h2 class="text-5xl font-bold text-center mb-16 text-white uppercase tracking-wider orbitron text-neon-blue">FEATURED PROJECTS</h2>
-      
-      <!-- Project 1: PHN Blockchain - HOT PROJECT -->
-      <div class="mb-24 relative group">
-        <div class="flex flex-col lg:flex-row glass-card rounded-2xl overflow-hidden border border-white/10 group-hover:border-primary/50 transition duration-500">
-          <div class="lg:w-1/2 p-8 relative z-10 bg-black/50">
-            <p class="text-sm text-orange-500 mb-4 uppercase tracking-wider orbitron font-bold">01. Blockchain Network</p>
-            <div class="relative overflow-hidden rounded-xl shadow-2xl">
-               <img src="project/phonesium/phonesium.png" class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-700" alt="Phonesium Network">
-            </div>
+        </article>
+        <article class="card">
+          <h3>Durga Structural</h3>
+          <p>Laravel backend with a Tailwind frontend for structural services and company presentation.</p>
+          <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Laravel</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Tailwind CSS</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Backend + Frontend</span></li>
+          </ul>
+          <div class="project-actions">
+            <a class="preview-btn" href="https://durgastructural.com.np/" target="_blank" rel="noopener noreferrer">Preview</a>
           </div>
-          <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-between">
-            <div>
-               <h3 class="text-3xl font-bold mb-4 uppercase tracking-wider orbitron text-white flex items-center gap-3">
-                Phonesium Network
-                <span class="px-3 py-1 bg-orange-500/20 text-orange-500 text-xs rounded-full border border-orange-500/50 animate-pulse">⭐ 2 STARS</span>
-              </h3>
-              <p class="text-gray-400 mb-8 leading-relaxed">
-                Production-ready blockchain built from scratch with <span class="text-orange-500 font-bold">enterprise-grade security</span>. Features <span class="text-orange-500 font-bold">Proof-of-Work mining</span>, wallet management, token support, and smart contracts. Fully decentralized with <span class="text-orange-500 font-bold">2 forks</span> on GitHub.
-              </p>
-              <div class="grid grid-cols-2 gap-y-4 gap-x-8 mb-8 text-sm">
-                <div><span class="text-gray-500 uppercase tracking-widest text-xs block mb-1">Type</span><span class="text-white font-bold">L1 Blockchain</span></div>
-                <div><span class="text-gray-500 uppercase tracking-widest text-xs block mb-1">Stack</span><span class="text-white font-bold">Python, PoW, Web3</span></div>
-                <div><span class="text-gray-500 uppercase tracking-widest text-xs block mb-1">Stars</span><span class="text-white font-bold">⭐ 2</span></div>
-                <div><span class="text-gray-500 uppercase tracking-widest text-xs block mb-1">Forks</span><span class="text-white font-bold">2</span></div>
-              </div>
-            </div>
-            <a href="https://github.com/prasangapokharel/phonesium-network" target="_blank" class="text-white font-bold uppercase tracking-widest text-sm flex items-center hover:text-orange-500 transition gap-2">
-              View Source Code <span class="text-xl">→</span>
-            </a>
+        </article>
+        <article class="card">
+          <h3>SMMAssistant</h3>
+          <p>Social media platform for scheduling and automatic weekly posts.</p>
+          <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Automation</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Scheduling</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Weekly Posts</span></li>
+          </ul>
+          <div class="project-actions">
+            <a class="preview-btn disabled" href="#" aria-disabled="true">Preview</a>
           </div>
-        </div>
-      </div>
-      
-      <!-- Project 2: Routine of Sunsari -->
-      <div class="mb-24 relative group">
-        <div class="flex flex-col lg:flex-row glass-card rounded-2xl overflow-hidden border border-white/10 group-hover:border-purple-500/50 transition duration-500">
-          <div class="lg:w-1/2 p-8 relative z-10 bg-black/50 lg:order-2">
-            <p class="text-sm text-purple-500 mb-4 uppercase tracking-wider orbitron font-bold">02. PHP Framework</p>
-            <div class="relative overflow-hidden rounded-xl shadow-2xl">
-                <img src="project/routineofsunsari/routine.png" class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-700" alt="Routine of Sunsari">
-            </div>
+        </article>
+        <article class="card">
+          <h3>Perai AI</h3>
+          <p>AI platform where companies can get custom models with tone, language, and Stripe integration at lower cost.</p>
+          <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Custom AI Models</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Tone and Language</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Stripe</span></li>
+          </ul>
+          <div class="project-actions">
+            <a class="preview-btn disabled" href="#" aria-disabled="true">Preview</a>
           </div>
-          <div class="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-between lg:order-1">
-            <div>
-              <h3 class="text-3xl font-bold mb-4 uppercase tracking-wider orbitron text-white flex items-center gap-3">
-                Routine of Sunsari
-                <span class="px-3 py-1 bg-purple-500/20 text-purple-500 text-xs rounded-full border border-purple-500/50">⭐ 2 STARS</span>
-              </h3>
-              <p class="text-gray-400 mb-8 leading-relaxed">
-                Blazing-fast PHP MVC framework with <span class="text-purple-500 font-bold">SPA-like AJAX navigation</span>, SQLite caching, rate limiting, event system, and complete REST API. <span class="text-purple-500 font-bold">Zero runtime dependencies</span> - production-ready out of the box.
-              </p>
-              <div class="grid grid-cols-2 gap-y-4 gap-x-8 mb-8 text-sm">
-                 <div><span class="text-gray-500 uppercase tracking-widest text-xs block mb-1">Type</span><span class="text-white font-bold">MVC Framework</span></div>
-                 <div><span class="text-gray-500 uppercase tracking-widest text-xs block mb-1">Stack</span><span class="text-white font-bold">PHP, SQLite, REST</span></div>
-                 <div><span class="text-gray-500 uppercase tracking-widest text-xs block mb-1">Stars</span><span class="text-white font-bold">⭐ 2</span></div>
-                 <div><span class="text-gray-500 uppercase tracking-widest text-xs block mb-1">Features</span><span class="text-white font-bold">SPA, Caching, API</span></div>
-              </div>
-            </div>
-             <a href="https://github.com/prasangapokharel/routineofsunsari" target="_blank" class="text-white font-bold uppercase tracking-widest text-sm flex items-center hover:text-purple-500 transition gap-2">
-              View Source Code <span class="text-xl">→</span>
-            </a>
+        </article>
+        <article class="card">
+          <h3>Internet Computer Protocol</h3>
+          <p>Smart contracts, canisters, and dApps built for the Internet Computer using Rust and Kybra.</p>
+          <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Rust</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Kybra</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>DFX</span></li>
+          </ul>
+          <div class="project-actions">
+            <a class="preview-btn" href="https://github.com/prasangapokharel/internet-computer-protocol" target="_blank" rel="noopener noreferrer">Preview</a>
           </div>
-        </div>
+        </article>
+        <article class="card">
+          <h3>NinjaScrapi</h3>
+          <p>Ultra-optimized Google Maps scraper Chrome extension with terminal UI and bulk data extraction.</p>
+          <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Chrome Extension</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>JavaScript</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Python</span></li>
+          </ul>
+          <div class="project-actions">
+            <a class="preview-btn" href="https://github.com/prasangapokharel/NinjaScrapi" target="_blank" rel="noopener noreferrer">Preview</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Solana Bulk Balance Checker</h3>
+          <p>Fast tool for checking SOL and SPL token balances across many Solana wallets using RPC calls.</p>
+          <ul>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Go</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>Python</span></li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg><span>RPC</span></li>
+          </ul>
+          <div class="project-actions">
+            <a class="preview-btn" href="https://github.com/prasangapokharel/Solana-Bulk-Balance-Checker" target="_blank" rel="noopener noreferrer">Preview</a>
+          </div>
+        </article>
       </div>
+    </section>
 
-      <!-- More Projects Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Project 3: Metallica Steel -->
-         <div class="glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition duration-300 group">
-            <div class="relative overflow-hidden h-48">
-                <img src="project/metallica/1.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Metallica Steel">
-            </div>
-            <div class="p-6">
-                <h4 class="text-xl font-bold text-white mb-2 orbitron">Metallica Steel ⭐ 1</h4>
-                <p class="text-gray-400 text-sm mb-4">A comprehensive steel and industrial materials platform featuring modern design, product catalogs, and business solutions.</p>
-               <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded border border-primary/30">Python</span>
-                  <span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded border border-primary/30">Flask</span>
-                  <span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded border border-primary/30">PDF</span>
-               </div>
-                <a href="https://metallicasteel.com.np/" target="_blank" class="block text-center w-full py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold uppercase tracking-widest transition">
-                  View on GitHub →
-               </a>
-            </div>
-         </div>
-         
-         <!-- Project 4: Khalti PHP SDK -->
-         <div class="glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition duration-300 group">
-            <div class="relative overflow-hidden h-48">
-                <img src="project/khalti-php-sdk/khalti-php-sdk.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Khalti PHP SDK">
-            </div>
-            <div class="p-6">
-               <h4 class="text-xl font-bold text-white mb-2 orbitron">Khalti PHP SDK ⭐ 1</h4>
-               <p class="text-gray-400 text-sm mb-4">Easy and lightweight PHP SDK for Khalti payment gateway integration with clean API design.</p>
-               <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded border border-primary/30">PHP</span>
-                  <span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded border border-primary/30">Payment</span>
-                  <span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded border border-primary/30">SDK</span>
-               </div>
-               <a href="https://github.com/prasangapokharel/khalti_sdk" target="_blank" class="block text-center w-full py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold uppercase tracking-widest transition">
-                  View on GitHub →
-               </a>
-            </div>
-         </div>
-         
-         <!-- Project 5: Internet Computer Protocol -->
-         <div class="glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition duration-300 group">
-            <div class="relative overflow-hidden h-48">
-               <img src="project/phonesium/phonesium.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="ICP Development">
-            </div>
-            <div class="p-6">
-               <h4 class="text-xl font-bold text-white mb-2 orbitron">ICP Development ⭐ 1</h4>
-               <p class="text-gray-400 text-sm mb-4">Internet Computer Protocol canisters, smart contracts and dApps built with Rust and Kybra (Python on ICP).</p>
-               <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded border border-primary/30">Rust</span>
-                  <span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded border border-primary/30">Web3</span>
-                  <span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded border border-primary/30">ICP</span>
-               </div>
-               <a href="https://github.com/prasangapokharel/internet-computer-protocol" target="_blank" class="block text-center w-full py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold uppercase tracking-widest transition">
-                  View on GitHub →
-               </a>
-            </div>
-         </div>
-         
-         <!-- Project 6: AI News Crawler -->
-         <div class="glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition duration-300 group">
-            <div class="relative overflow-hidden h-48">
-               <img src="project/skptraders/SkpTrader.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="AI News Crawler">
-            </div>
-            <div class="p-6">
-               <h4 class="text-xl font-bold text-white mb-2 orbitron">AI News Crawler</h4>
-               <p class="text-gray-400 text-sm mb-4">AI-powered news crawler with RAG pipeline — scrapes, processes and summarizes articles using LLMs.</p>
-               <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded border border-primary/30">Python</span>
-                  <span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded border border-primary/30">AI</span>
-                  <span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded border border-primary/30">RAG</span>
-               </div>
-               <a href="https://github.com/prasangapokharel/news-crawler" target="_blank" class="block text-center w-full py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold uppercase tracking-widest transition">
-                  View on GitHub →
-               </a>
-            </div>
-         </div>
-         
-         <!-- Project 7: Laptop Repair System -->
-         <div class="glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition duration-300 group">
-            <div class="relative overflow-hidden h-48">
-               <img src="project/sukuna/1.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Laptop Repair System">
-            </div>
-            <div class="p-6">
-               <h4 class="text-xl font-bold text-white mb-2 orbitron">Laptop Repair System</h4>
-               <p class="text-gray-400 text-sm mb-4">Full-stack repair management system — track repairs, manage customers, invoicing and inventory with Python backend.</p>
-               <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded border border-primary/30">Python</span>
-                  <span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded border border-primary/30">Full-Stack</span>
-                  <span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded border border-primary/30">CRM</span>
-               </div>
-               <a href="https://github.com/prasangapokharel/laptop-repair-system" target="_blank" class="block text-center w-full py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold uppercase tracking-widest transition">
-                  View on GitHub →
-               </a>
-            </div>
-         </div>
-         
-         <!-- Project 8: Turbo Domain Finder -->
-         <div class="glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition duration-300 group">
-            <div class="relative overflow-hidden h-48">
-               <img src="project/nutrinexas/2.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Turbo Domain Finder">
-            </div>
-            <div class="p-6">
-               <h4 class="text-xl font-bold text-white mb-2 orbitron">Turbo Domain Finder</h4>
-               <p class="text-gray-400 text-sm mb-4">Flask web app to instantly check domain availability across 50+ TLD extensions. Fast and reliable.</p>
-               <div class="flex flex-wrap gap-2 mb-4">
-                  <span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded border border-primary/30">Flask</span>
-                  <span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded border border-primary/30">Web App</span>
-                  <span class="px-2 py-1 bg-primary/20 text-primary text-[10px] rounded border border-primary/30">DNS</span>
-               </div>
-               <a href="https://github.com/prasangapokharel/turbo-domain-finder" target="_blank" class="block text-center w-full py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold uppercase tracking-widest transition">
-                  View on GitHub →
-               </a>
-            </div>
-         </div>
+    <section id="certifications">
+      <div class="eyebrow">Certifications</div>
+      <h2>Professional Certificates</h2>
+      <div class="grid certifications-grid">
+        <article class="card cert-card">
+          <figure>
+            <img src="certification/ADP Certified Analyst.png" alt="ADP Certified Analyst certificate">
+          </figure>
+          <h3>ADP Certified Analyst</h3>
+          <p>Course certificate focused on compensation and benefits analytics.</p>
+        </article>
+        <article class="card cert-card">
+          <figure>
+            <img src="certification/nextjs completion Certificate.png" alt="Next.js course certificate">
+          </figure>
+          <h3>Next.js Crash Course</h3>
+          <p>Full stack Next.js training focused on building production-ready applications.</p>
+        </article>
+        <article class="card cert-card">
+          <figure>
+            <img src="certification/Google Ai Essentials Certification.png" alt="Google AI Essentials certificate">
+          </figure>
+          <h3>Google AI Essentials</h3>
+          <p>AI fundamentals, productivity workflows, and applied tool usage.</p>
+        </article>
+        <article class="card cert-card">
+          <figure>
+            <img src="certification/MetaCertifedDatabaseEngineer.png" alt="Meta database engineer certificate">
+          </figure>
+          <h3>Database Structures</h3>
+          <p>Meta-certified database structures and management with MySQL.</p>
+        </article>
       </div>
-      
-      <div class="text-center mt-16">
-        <a href="https://github.com/prasangapokharel" class="glass-card px-10 py-4 uppercase tracking-widest text-sm font-bold text-white hover:bg-white hover:text-black transition duration-300 inline-block rounded-full">
-          Explore All Projects on GitHub
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="py-24 relative section-transition">
-    <div class="absolute inset-0 bg-black/50"></div>
-    <div class="container mx-auto px-6 relative z-10">
-      <p class="text-sm text-primary mb-2 uppercase tracking-wider orbitron text-center">WHAT I DO</p>
-      <h2 class="text-5xl font-bold text-center mb-12 text-white uppercase tracking-wider orbitron text-neon-blue">MY SERVICES</h2>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Service Cards -->
-        <div class="glass-card p-8 rounded-2xl hover:bg-primary/10 transition duration-300">
-           <svg class="w-10 h-10 text-primary mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-           <h3 class="text-xl font-bold text-white mb-3 orbitron">Web Development</h3>
-           <p class="text-gray-400 text-sm leading-relaxed">High-performance web applications using Next.js and Python backends.</p>
-        </div>
-        
-        <div class="glass-card p-8 rounded-2xl hover:bg-primary/10 transition duration-300">
-           <svg class="w-10 h-10 text-primary mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
-           <h3 class="text-xl font-bold text-white mb-3 orbitron">App Development</h3>
-           <p class="text-gray-400 text-sm leading-relaxed">Native and cross-platform mobile solutions for iOS and Android.</p>
-        </div>
-
-        <div class="glass-card p-8 rounded-2xl hover:bg-primary/10 transition duration-300">
-           <svg class="w-10 h-10 text-primary mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
-           <h3 class="text-xl font-bold text-white mb-3 orbitron">AI Integration</h3>
-           <p class="text-gray-400 text-sm leading-relaxed">Custom LLMs, RAG pipelines, and intelligent automation agents.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Footer -->
-  <footer class="py-12 border-t border-white/5 bg-black/80 relative z-10">
-    <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-      <div class="text-center md:text-left">
-        <h4 class="text-2xl font-bold text-white orbitron">PRASANGA</h4>
-        <p class="text-gray-500 text-xs mt-2">© 2026 Prasanga Pokharel. All Rights Reserved.</p>
-      </div>
-      <div class="flex gap-6">
-         <a href="#" class="text-gray-500 hover:text-white transition text-sm font-bold uppercase tracking-widest">GitHub</a>
-         <a href="#" class="text-gray-500 hover:text-white transition text-sm font-bold uppercase tracking-widest">LinkedIn</a>
-         <a href="#" class="text-gray-500 hover:text-white transition text-sm font-bold uppercase tracking-widest">Twitter</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script>
-    // Initialize AOS
-    AOS.init({
-      once: true,
-      duration: 800,
-      easing: 'ease-out-cubic'
-    });
-    
-    // Typing effect function
-    function typeEffect(element, text, speed) {
-      let i = 0;
-      element.textContent = '';
-      const typingInterval = setInterval(() => {
-        if (i < text.length) {
-          element.textContent += text.charAt(i);
-          i++;
-        } else {
-          clearInterval(typingInterval);
-          setTimeout(() => {
-            element.textContent = '';
-            typeEffect(element, text, speed);
-          }, 3000);
-        }
-      }, speed);
-    }
-
-    // Initialize typing effect when DOM is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      const typingText = "Full Stack Developer | Python • AI • Web3";
-      const typingSpeed = 50;
-      typeEffect(document.getElementById('typing-text'), typingText, typingSpeed);
-      
-      // Initialize section transitions
-      const sections = document.querySelectorAll('.section-transition');
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      };
-      
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-      
-      sections.forEach(section => {
-        observer.observe(section);
-      });
-      
-      // Initialize scroll reveal animations
-      const revealElements = document.querySelectorAll('.reveal-left, .reveal-right, .reveal-up');
-      
-      const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      });
-      
-      revealElements.forEach(element => {
-        revealObserver.observe(element);
-      });
-    });
-  </script>
+    </section>
+  </main>
 </body>
 </html>
