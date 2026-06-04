@@ -346,10 +346,10 @@ h3 {
 .showcase-slider {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(86vw, 1fr);
-  gap: 0.9rem;
+  grid-auto-columns: minmax(90vw, 1fr);
+  gap: 1rem;
   overflow-x: auto;
-  padding-bottom: 0.5rem;
+  padding: 0.25rem 0 0.75rem;
   cursor: grab;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
@@ -361,22 +361,22 @@ h3 {
 
 .showcase-slide {
   scroll-snap-align: start;
-  padding: 0.6rem;
-  border-radius: 1.75rem;
+  padding: 0.75rem;
+  border-radius: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 20px 50px rgba(17, 24, 39, 0.08);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 24px 60px rgba(17, 24, 39, 0.08);
 }
 
 .showcase-slide img {
   width: 100%;
   max-width: 100%;
-  height: min(70vh, 760px);
+  height: clamp(520px, 72vh, 860px);
   object-fit: contain;
   display: block;
-  border-radius: 1.25rem;
+  border-radius: 1.5rem;
   background: rgba(255, 255, 255, 0.4);
 }
 
@@ -499,7 +499,7 @@ h3 {
   }
 
   .showcase-slider {
-    grid-auto-columns: minmax(74vw, 1fr);
+    grid-auto-columns: minmax(82vw, 1fr);
   }
 }
 
@@ -513,12 +513,12 @@ h3 {
   }
 
   .showcase-slider {
-    grid-auto-columns: minmax(66vw, 1fr);
+    grid-auto-columns: minmax(74vw, 1fr);
   }
 }
 
 @media (min-width: 1024px) {
   .showcase-slider {
-    grid-auto-columns: minmax(58vw, 1fr);
+    grid-auto-columns: minmax(66vw, 1fr);
   }
 }

@@ -262,7 +262,7 @@
         <div class="eyebrow">Showcase</div>
         <h2>Portfolio Screens</h2>
       </div>
-      <div class="showcase-slider" aria-label="Portfolio screenshots">
+      <div class="showcase-slider" tabindex="0" aria-label="Portfolio screenshots" aria-roledescription="carousel">
         <article class="showcase-slide card glass-card"><img src="showcase/CompAi/1.png" alt="CompAi screenshot 1" loading="lazy" decoding="async"></article>
         <article class="showcase-slide card glass-card"><img src="showcase/CompAi/2.png" alt="CompAi screenshot 2" loading="lazy" decoding="async"></article>
         <article class="showcase-slide card glass-card"><img src="showcase/perai/1.png" alt="Perai screenshot 1" loading="lazy" decoding="async"></article>
@@ -284,5 +284,25 @@
       </div>
     </section>
   </main>
+  <script>
+    (() => {
+      const slider = document.querySelector('.showcase-slider');
+      if (!slider) return;
+
+      const step = () => Math.max(slider.clientWidth * 0.9, 360);
+
+      slider.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          slider.scrollBy({ left: step(), behavior: 'smooth' });
+        }
+
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          slider.scrollBy({ left: -step(), behavior: 'smooth' });
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
