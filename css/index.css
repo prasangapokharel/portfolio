@@ -307,9 +307,73 @@ h3 {
 }
 
 .skills-grid,
+.competency-grid,
+.showcase-grid,
 .projects-grid,
 .certifications-grid {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.competency-card {
+  padding: 1.1rem;
+}
+
+.competency-card h3 {
+  margin-bottom: 0.9rem;
+}
+
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.icon-tile {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(17, 24, 39, 0.08);
+}
+
+.icon-tile img {
+  width: 1.8rem;
+  height: 1.8rem;
+  object-fit: contain;
+}
+
+.showcase-card {
+  overflow: hidden;
+}
+
+.showcase-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.showcase-head p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(17, 24, 39, 0.66);
+}
+
+.showcase-media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.showcase-media-grid img {
+  width: 100%;
+  aspect-ratio: 1.15 / 1;
+  object-fit: cover;
+  display: block;
+  border-radius: 0.85rem;
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .card {
@@ -421,6 +485,14 @@ h3 {
   .content-section {
     padding-top: 4rem;
   }
+
+  .icon-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .showcase-media-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (min-width: 768px) {
@@ -430,5 +502,9 @@ h3 {
 
   .portfolio-panel {
     min-height: calc(100vh - 3rem);
+  }
+
+  .showcase-media-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
