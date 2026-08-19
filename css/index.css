@@ -28,8 +28,10 @@ a {
 
 .portfolio-panel,
 .content-section {
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .portfolio-panel {
@@ -37,7 +39,7 @@ a {
   overflow: hidden;
   border-radius: 2rem;
   min-height: calc(100vh - 1.5rem);
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
   isolation: isolate;
 }
 
@@ -157,6 +159,7 @@ a {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
   margin-top: 2.75rem;
+  margin-bottom: 0;
 }
 
 .hero-btn {
@@ -298,7 +301,11 @@ h3 {
 }
 
 .content-section {
-  padding: 3.5rem 0 0;
+  padding: 3.5rem 1.5rem 0;
+}
+
+.content-section:first-of-type {
+  padding-top: 2rem;
 }
 
 .grid {
@@ -311,7 +318,26 @@ h3 {
 .showcase-grid,
 .projects-grid,
 .certifications-grid {
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .projects-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .competency-card {
@@ -400,15 +426,35 @@ h3 {
 .showcase-groups {
   display: grid;
   gap: 2.5rem;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .showcase-group-head {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
   gap: 0.75rem;
   margin-bottom: 1rem;
+}
+
+.showcase-group-head > div:first-child {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .showcase-group-head {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .showcase-group-head > div:first-child {
+    width: auto;
+    flex: 1;
+    min-width: 0;
+  }
 }
 
 .showcase-group-head h3 {
@@ -464,11 +510,32 @@ h3 {
   justify-content: start;
   gap: 1rem;
   overflow-x: auto;
+  overflow-y: hidden;
   max-width: 100%;
+  width: 100%;
   padding: 0.25rem 0 0.75rem;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(17, 24, 39, 0.2) transparent;
+}
+
+.showcase-track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.showcase-track::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.showcase-track::-webkit-scrollbar-thumb {
+  background: rgba(17, 24, 39, 0.2);
+  border-radius: 3px;
+}
+
+.showcase-track::-webkit-scrollbar-thumb:hover {
+  background: rgba(17, 24, 39, 0.3);
 }
 
 .showcase-track--portrait {
@@ -482,6 +549,7 @@ h3 {
   gap: 0.6rem;
   margin: 0;
   min-width: 0;
+  max-width: 100%;
   padding: 0.65rem;
   border-radius: 1.5rem;
   background: rgba(255, 255, 255, 0.96);
@@ -491,6 +559,7 @@ h3 {
 
 .showcase-shot img {
   width: 100%;
+  max-width: 100%;
   aspect-ratio: 16 / 10;
   height: auto;
   object-fit: cover;
@@ -592,14 +661,10 @@ h3 {
 }
 
 @media (min-width: 640px) {
-  .page-root {
-    padding: 1rem;
-  }
-
   .portfolio-panel {
     padding: 1.25rem;
     border-radius: 2rem;
-    min-height: calc(100vh - 2rem);
+    min-height: 100vh;
   }
 
   .nav-pill {
@@ -638,12 +703,8 @@ h3 {
 }
 
 @media (min-width: 768px) {
-  .page-root {
-    padding: 1.5rem;
-  }
-
   .portfolio-panel {
-    min-height: calc(100vh - 3rem);
+    min-height: 100vh;
   }
 
   .showcase-track {
