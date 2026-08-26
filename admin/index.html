@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin | Client Submissions</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <section class="login-screen" id="loginScreen">
+    <div class="login-card">
+      <h1>Admin Login</h1>
+      <p>Enter your password to view client submissions.</p>
+      <form class="login-form" id="loginForm">
+        <input type="password" id="passwordInput" placeholder="Password" autocomplete="current-password" required>
+        <button type="submit">Unlock</button>
+      </form>
+      <p class="login-error" id="loginError">Incorrect password. Try again.</p>
+    </div>
+  </section>
+
+  <div class="admin-app" id="adminApp">
+    <div class="admin-container">
+      <header class="admin-header">
+        <h1>Client Submissions</h1>
+        <div class="header-actions">
+          <button class="logout-btn" type="button" id="logoutBtn">Logout</button>
+          <a href="../index.html" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+            </svg>
+            Back to Portfolio
+          </a>
+        </div>
+      </header>
+
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-label">Total</div>
+          <div class="stat-value" id="totalCount">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">New</div>
+          <div class="stat-value" id="newCount">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Contacted</div>
+          <div class="stat-value" id="contactedCount">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Completed</div>
+          <div class="stat-value" id="completedCount">0</div>
+        </div>
+      </div>
+
+      <div class="submissions-header">
+        <h2>All Submissions</h2>
+        <div class="filter-buttons">
+          <button class="filter-btn" type="button" id="refreshBtn">Refresh</button>
+          <button class="filter-btn active" data-filter="all" type="button">All</button>
+          <button class="filter-btn" data-filter="new" type="button">New</button>
+          <button class="filter-btn" data-filter="contacted" type="button">Contacted</button>
+          <button class="filter-btn" data-filter="completed" type="button">Completed</button>
+        </div>
+      </div>
+
+      <div class="submissions-list" id="submissionsList">
+        <div class="empty-state">
+          <p>Loading submissions...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/admin-auth.js"></script>
+  <script src="../js/upstash-config.js"></script>
+  <script src="../js/submissions-db.js"></script>
+  <script>
+    let allSubmissions = [];
+    let currentFilter = 'all';
+
+    const loginScreen = document.getElementById('loginScreen');
+    const adminApp = document.getElementById('adminApp');
+    const loginError = document.getElementById('loginError');
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function showAdmin() {
+      loginScreen.style.display = 'none';
+      adminApp.classList.add('visible');
+      loadSubmissions();
+    }
+
+    function showLogin() {
+      AdminAuth.logout();
+      adminApp.classList.remove('visible');
+      loginScreen.style.display = 'grid';
+      document.getElementById('passwordInput').value = '';
+      loginError.classList.remove('visible');
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+      const password = document.getElementById('passwordInput').value;
+
+      if (AdminAuth.login(password)) {
+        loginError.classList.remove('visible');
+        showAdmin();
+        return;
+      }
+
+      loginError.classList.add('visible');
+    });
+
+    document.getElementById('logoutBtn').addEventListener('click', showLogin);
+
+    async function loadSubmissions() {
+      try {
+        const db = await SubmissionsDb.loadDb();
+        allSubmissions = db.submissions || [];
+        updateStats();
+        renderSubmissions();
+      } catch (error) {
+        document.getElementById('submissionsList').innerHTML = `
+          <div class="empty-state">
+            <p>Could not load submissions.</p>
+          </div>
+        `;
+      }
+    }
+
+    function updateStats() {
+      document.getElementById('totalCount').textContent = allSubmissions.length;
+      document.getElementById('newCount').textContent = allSubmissions.filter(s => s.status === 'new').length;
+      document.getElementById('contactedCount').textContent = allSubmissions.filter(s => s.status === 'contacted').length;
+      document.getElementById('completedCount').textContent = allSubmissions.filter(s => s.status === 'completed').length;
+    }
+
+    function renderSubmissions() {
+      const list = document.getElementById('submissionsList');
+      const filtered = currentFilter === 'all'
+        ? allSubmissions
+        : allSubmissions.filter(s => s.status === currentFilter);
+
+      if (filtered.length === 0) {
+        list.innerHTML = `
+          <div class="empty-state">
+            <p>No ${currentFilter === 'all' ? '' : currentFilter} submissions</p>
+          </div>
+        `;
+        return;
+      }
+
+      list.innerHTML = filtered.map(sub => `
+        <article class="submission-card">
+          <div class="submission-header">
+            <div class="submission-info">
+              <h3>${escapeHtml(sub.name)}</h3>
+              <div class="submission-meta">
+                <span>${new Date(sub.submittedAt).toLocaleDateString()}</span>
+                <span>${new Date(sub.submittedAt).toLocaleTimeString()}</span>
+              </div>
+            </div>
+            <span class="status-badge status-${escapeHtml(sub.status)}">${escapeHtml(sub.status)}</span>
+          </div>
+
+          <div class="submission-details">
+            <div>
+              <div class="detail-label">Service</div>
+              <div class="detail-value">${escapeHtml(sub.service)}</div>
+            </div>
+            <div>
+              <div class="detail-label">Email</div>
+              <div class="detail-value">${escapeHtml(sub.email)}</div>
+            </div>
+            <div>
+              <div class="detail-label">Company</div>
+              <div class="detail-value">${escapeHtml(sub.company)}</div>
+            </div>
+            <div>
+              <div class="detail-label">Budget</div>
+              <div class="detail-value">${escapeHtml(sub.budget)}</div>
+            </div>
+          </div>
+
+          <div class="submission-message">
+            <h4>Project Details</h4>
+            <p>${escapeHtml(sub.message)}</p>
+          </div>
+
+          <div class="submission-actions">
+            ${sub.status === 'new' ? `<button class="action-btn" type="button" onclick="updateStatus('${escapeHtml(sub.id)}', 'contacted')">Mark as Contacted</button>` : ''}
+            ${sub.status === 'contacted' ? `<button class="action-btn" type="button" onclick="updateStatus('${escapeHtml(sub.id)}', 'completed')">Mark as Completed</button>` : ''}
+            <button class="action-btn delete" type="button" onclick="deleteSubmission('${escapeHtml(sub.id)}')">Delete</button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    async function updateStatus(id, status) {
+      allSubmissions = allSubmissions.map(sub => sub.id === id ? { ...sub, status } : sub);
+
+      try {
+        await SubmissionsDb.saveDb({ submissions: allSubmissions });
+        updateStats();
+        renderSubmissions();
+      } catch (error) {
+        alert('Could not update submission.');
+        await loadSubmissions();
+      }
+    }
+
+    async function deleteSubmission(id) {
+      if (!confirm('Delete this submission?')) {
+        return;
+      }
+
+      allSubmissions = allSubmissions.filter(sub => sub.id !== id);
+
+      try {
+        await SubmissionsDb.saveDb({ submissions: allSubmissions });
+        updateStats();
+        renderSubmissions();
+      } catch (error) {
+        alert('Could not delete submission.');
+        await loadSubmissions();
+      }
+    }
+
+    document.getElementById('refreshBtn').addEventListener('click', loadSubmissions);
+
+    document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn[data-filter]').forEach(item => item.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        renderSubmissions();
+      });
+    });
+
+    if (AdminAuth.isAuthenticated()) {
+      showAdmin();
+    }
+
+    setInterval(() => {
+      if (AdminAuth.isAuthenticated()) {
+        loadSubmissions();
+      }
+    }, 30000);
+  </script>
+</body>
+</html>

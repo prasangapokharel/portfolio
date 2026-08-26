@@ -41,11 +41,7 @@
         </div>
       </header>
 
-      <form class="project-form" id="projectForm" action="https://formsubmit.co/your-email@example.com" method="POST">
-        <input type="hidden" name="_subject" value="New Project Inquiry">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+      <form class="project-form" id="projectForm">
 
         <!-- Step 1: Service Selection -->
         <section class="form-step active" data-step="1">
@@ -54,116 +50,189 @@
             <p class="step-subtitle">Choose the service that best fits your needs</p>
             <div class="service-grid">
               <label class="service-card">
-                <input type="radio" name="service" value="Onchain Dapp Creation - $3500" required>
+                <input type="radio" name="service" value="Landing Page & Portfolio - From $399" required>
+                <div class="service-content">
+                  <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5a17.92 17.92 0 0 1-8.618 3.04A8.966 8.966 0 0 1 3 12c0-1.105.223-2.155.623-3.111" />
+                    </svg>
+                  </div>
+                  <h3>Landing Page & Portfolio</h3>
+                  <p class="service-desc">Fast, responsive site with clean design, SEO basics, and contact form setup</p>
+                  <div class="service-price">From $399</div>
+                </div>
+                <div class="service-check">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" /></svg>
+                </div>
+              </label>
+
+              <label class="service-card">
+                <input type="radio" name="service" value="Full Stack Web App - From $1299" required>
+                <div class="service-content">
+                  <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+                    </svg>
+                  </div>
+                  <h3>Full Stack Web App</h3>
+                  <p class="service-desc">Production app with Go or Next.js backend, database, auth, and admin panel</p>
+                  <div class="service-price">From $1,299</div>
+                </div>
+                <div class="service-check">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" /></svg>
+                </div>
+              </label>
+
+              <label class="service-card">
+                <input type="radio" name="service" value="API & Backend Development - From $899" required>
+                <div class="service-content">
+                  <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3" />
+                    </svg>
+                  </div>
+                  <h3>API & Backend Development</h3>
+                  <p class="service-desc">REST or WebSocket APIs with Go, FastAPI, PostgreSQL, Redis, and deployment</p>
+                  <div class="service-price">From $899</div>
+                </div>
+                <div class="service-check">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" /></svg>
+                </div>
+              </label>
+
+              <label class="service-card">
+                <input type="radio" name="service" value="AI Chatbot & RAG Integration - From $1199" required>
+                <div class="service-content">
+                  <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z" />
+                    </svg>
+                  </div>
+                  <h3>AI Chatbot & RAG</h3>
+                  <p class="service-desc">Custom AI assistant with document search, LLM orchestration, and API integration</p>
+                  <div class="service-price">From $1,199</div>
+                </div>
+                <div class="service-check">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" /></svg>
+                </div>
+              </label>
+
+              <label class="service-card">
+                <input type="radio" name="service" value="Onchain Dapp - From $2499" required>
                 <div class="service-content">
                   <div class="service-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
                     </svg>
                   </div>
-                  <h3>Onchain Dapp Creation</h3>
-                  <p class="service-desc">Full-stack decentralized application built on Internet Computer or Ethereum</p>
-                  <div class="service-price">$3,500</div>
+                  <h3>Onchain Dapp</h3>
+                  <p class="service-desc">Decentralized app on Internet Computer or Ethereum with wallet and smart contracts</p>
+                  <div class="service-price">From $2,499</div>
                 </div>
                 <div class="service-check">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" /></svg>
                 </div>
               </label>
 
               <label class="service-card">
-                <input type="radio" name="service" value="System Architect for ICP - $2000" required>
+                <input type="radio" name="service" value="ICP System Architecture - From $999" required>
                 <div class="service-content">
                   <div class="service-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 0 1-1.125-1.125v-3.75ZM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-8.25ZM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 0 1-1.125-1.125v-2.25Z" />
                     </svg>
                   </div>
-                  <h3>System Architect for ICP</h3>
-                  <p class="service-desc">Complete architecture design and planning for Internet Computer projects</p>
-                  <div class="service-price">$2,000</div>
+                  <h3>ICP System Architecture</h3>
+                  <p class="service-desc">Motoko canister design, scalability planning, and technical roadmap for ICP projects</p>
+                  <div class="service-price">From $999</div>
                 </div>
                 <div class="service-check">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" /></svg>
                 </div>
               </label>
 
               <label class="service-card">
-                <input type="radio" name="service" value="Build Native App - $3000" required>
+                <input type="radio" name="service" value="Mobile App (React Native) - From $1699" required>
                 <div class="service-content">
                   <div class="service-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
                     </svg>
                   </div>
-                  <h3>Build Native App</h3>
-                  <p class="service-desc">Cross-platform mobile application for iOS and Android using React Native</p>
-                  <div class="service-price">$3,000</div>
+                  <h3>Mobile App</h3>
+                  <p class="service-desc">Cross-platform iOS and Android app with React Native, API integration, and store prep</p>
+                  <div class="service-price">From $1,699</div>
                 </div>
                 <div class="service-check">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" /></svg>
                 </div>
               </label>
 
               <label class="service-card">
-                <input type="radio" name="service" value="Package Builder - $2500" required>
+                <input type="radio" name="service" value="Open Source Package Setup - From $799" required>
                 <div class="service-content">
                   <div class="service-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
                     </svg>
                   </div>
-                  <h3>Package Builder</h3>
-                  <p class="service-desc">Build and publish npm, pip, or Go packages with documentation and CI/CD</p>
-                  <div class="service-price">$2,500</div>
+                  <h3>Open Source Package</h3>
+                  <p class="service-desc">npm, pip, or Go package with docs, tests, CI/CD, and publish to registry</p>
+                  <div class="service-price">From $799</div>
                 </div>
                 <div class="service-check">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" /></svg>
                 </div>
               </label>
 
               <label class="service-card">
-                <input type="radio" name="service" value="SEO & Search Engine Optimization - $1500" required>
+                <input type="radio" name="service" value="SEO & Performance Audit - From $499" required>
                 <div class="service-content">
                   <div class="service-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                     </svg>
                   </div>
-                  <h3>SEO Optimization</h3>
-                  <p class="service-desc">Complete search engine optimization with technical SEO and performance audit</p>
-                  <div class="service-price">$1,500</div>
+                  <h3>SEO & Performance Audit</h3>
+                  <p class="service-desc">Technical SEO review, Core Web Vitals fixes, and actionable improvement report</p>
+                  <div class="service-price">From $499</div>
                 </div>
                 <div class="service-check">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" /></svg>
                 </div>
               </label>
 
               <label class="service-card">
-                <input type="radio" name="service" value="Code Audit - $500" required>
+                <input type="radio" name="service" value="Code Audit & Security Review - From $299" required>
                 <div class="service-content">
                   <div class="service-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
                     </svg>
                   </div>
-                  <h3>Code Audit</h3>
-                  <p class="service-desc">Security review and comprehensive audit of your existing codebase</p>
-                  <div class="service-price">$500</div>
+                  <h3>Code Audit & Security</h3>
+                  <p class="service-desc">Review codebase for bugs, security risks, and performance issues with fix priorities</p>
+                  <div class="service-price">From $299</div>
                 </div>
                 <div class="service-check">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" /></svg>
+                </div>
+              </label>
+
+              <label class="service-card">
+                <input type="radio" name="service" value="Bug Fixes & Maintenance - From $199" required>
+                <div class="service-content">
+                  <div class="service-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085" />
+                    </svg>
+                  </div>
+                  <h3>Bug Fixes & Maintenance</h3>
+                  <p class="service-desc">Quick fixes, updates, and small feature changes for existing apps or websites</p>
+                  <div class="service-price">From $199</div>
+                </div>
+                <div class="service-check">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" /></svg>
                 </div>
               </label>
 
@@ -176,13 +245,11 @@
                     </svg>
                   </div>
                   <h3>Custom Project</h3>
-                  <p class="service-desc">Have something else in mind? Let's discuss your requirements</p>
-                  <div class="service-price">Custom</div>
+                  <p class="service-desc">Have a unique idea? Let's discuss scope, timeline, and a fair quote together</p>
+                  <div class="service-price">Custom Quote</div>
                 </div>
                 <div class="service-check">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                    <path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M19.916 4.626a.75.75 0 0 1 .208 1.04l-9 13.5a.75.75 0 0 1-1.154.114l-6-6a.75.75 0 0 1 1.06-1.06l5.353 5.353 8.493-12.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" /></svg>
                 </div>
               </label>
             </div>
@@ -289,6 +356,8 @@
     </div>
   </main>
 
+  <script src="js/upstash-config.js"></script>
+  <script src="js/submissions-db.js"></script>
   <script>
     let currentStep = 1;
     const totalSteps = 3;
@@ -347,38 +416,45 @@
       }
     }
 
-    document.getElementById('projectForm').addEventListener('submit', function(e) {
+    document.getElementById('projectForm').addEventListener('submit', async function(e) {
       e.preventDefault();
 
-      // Get form data
+      const submitBtn = this.querySelector('.submit-btn');
+      const originalLabel = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
       const formData = {
-        id: Date.now().toString(),
         service: document.querySelector('input[name="service"]:checked').value,
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        company: document.getElementById('company').value || 'N/A',
-        budget: document.getElementById('budget').value || 'N/A',
-        message: document.getElementById('message').value,
-        status: 'new',
-        submittedAt: new Date().toISOString()
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        company: document.getElementById('company').value.trim(),
+        budget: document.getElementById('budget').value,
+        message: document.getElementById('message').value.trim()
       };
 
-      // Save to localStorage
-      let submissions = JSON.parse(localStorage.getItem('projectSubmissions') || '[]');
-      submissions.unshift(formData);
-      localStorage.setItem('projectSubmissions', JSON.stringify(submissions));
+      try {
+        if (!SubmissionsDb.isReady()) {
+          throw new Error('Upstash config missing');
+        }
 
-      // Show success step
-      document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.remove('active');
-      document.querySelector('.success-step').classList.add('active');
-      document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('completed');
+        const submission = SubmissionsDb.createSubmission(formData);
+        await SubmissionsDb.addSubmission(submission);
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.remove('active');
+        document.querySelector('.success-step').classList.add('active');
+        document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('completed');
 
-      // Reset form
-      setTimeout(() => {
-        this.reset();
-      }, 2000);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        setTimeout(() => {
+          this.reset();
+        }, 2000);
+      } catch (error) {
+        alert('Could not send your inquiry. Please try again.');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalLabel;
+      }
     });
   </script>
 </body>
