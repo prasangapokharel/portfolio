@@ -112,6 +112,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Project Inquiry Page -->
+  <url>
+    <loc>https://www.prasangapokharel.com.np/project/</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Government Blogs -->
   <url>
     <loc>https://prasangapokharel.com.np/blogs/latestnews/government/ai-transforming-government-services-2026.html</loc>
